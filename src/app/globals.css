@@ -1,0 +1,398 @@
+@import "./theme.css";
+@import "lenis/dist/lenis.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .font-anton {
+    font-family: var(--font-anton), sans-serif;
+  }
+  .font-bebas {
+    font-family: var(--font-sans), Inter, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .font-kaushan {
+    font-family: var(--font-sans), Inter, sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .font-inter {
+    font-family: var(--font-sans), sans-serif;
+  }
+}
+@keyframes phone-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-phone-float {
+    animation: phone-float 6s ease-in-out infinite;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pricing-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 185, 129, 0.45) rgba(8, 12, 10, 0.9);
+}
+.pricing-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.pricing-scroll::-webkit-scrollbar-track {
+  background: rgba(10, 8, 12, 0.9);
+}
+.pricing-scroll::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.45);
+  border-radius: 999px;
+}
+.pricing-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.65);
+}
+/* --- NAVBAR BUTTON (Sweep effect with our color palette) --- */
+.btn-nav-sweep {
+  --color: #10B981;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s, border-color 0.5s;
+  z-index: 1;
+  font-size: 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #E6E3E8;
+  text-decoration: none;
+}
+
+.btn-nav-sweep::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-nav-sweep:hover {
+  color: #fff;
+  border-color: #059669;
+}
+
+.btn-nav-sweep:hover::before {
+  top: -30px;
+  left: -30px;
+}
+
+.btn-nav-sweep:active::before {
+  background: #5c1885;
+  transition: background 0s;
+}
+
+/* --- HERO SECTION START AUTOMATION BUTTON (Boton Elegante) --- */
+.boton-elegante {
+  padding: 12px 26px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: scale(0);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.boton-elegante:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+}
+
+
+
+
+/* Prevent Flash of Unstyled Content for GSAP intro sequences */
+@media (prefers-reduced-motion: no-preference) {
+  [data-intro] {
+    visibility: hidden;
+  }
+}
+
+html {
+  letter-spacing: 0em;
+  scrollbar-width: thin;
+  scrollbar-color: #5B4370 #0A080C;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans), Inter, system-ui, -apple-system, sans-serif;
+  letter-spacing: 0em;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+/* --- FreshDM Themed Custom Scrollbars --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A080C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5B4370;
+  border-radius: 9999px;
+  border: 2px solid #0A080C;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}
+
+::-webkit-scrollbar-corner {
+  background: #0A080C;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5B4370 #0A080C;
+}
+
+/* Claymorphic depth customized for Violet/Indigo Midnight palette */
+.clay-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card, 8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(164, 143, 255, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s;
+}
+
+.clay-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(164, 143, 255, 0.4);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(164, 143, 255, 0.16);
+}
+
+/* Subtle Lavender Radial Glow */
+.radial-glow-lavender {
+  background: radial-gradient(circle at 50% 30%, rgba(164, 143, 255, 0.14), transparent 60%);
+}
+
+.radial-glow-accent {
+  background: radial-gradient(circle at center, rgba(48, 48, 96, 0.35), transparent 65%);
+}
+
+/* Marquee infinite loop */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 32s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 32s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+  60% {
+    left: 100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+.styled-signup-btn::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+.styled-signup-btn:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeSlideIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Globally hide scrollbars for clean phone mockup screens */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Constant perfect circular orbit animation behind the phone */
+@keyframes orbitSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes orbitCounter {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+.animate-orbit-spin {
+  animation: orbitSpin 24s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbitCounter 24s linear infinite;
+}
+
+/* Hardware-accelerated vertical marquee animations for 60-120fps smooth performance */
+@keyframes marquee-up {
+  0% {
+    transform: translate3d(0, 0%, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes marquee-down {
+  0% {
+    transform: translate3d(0, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0%, 0);
+  }
+}
+
+.animate-marquee-up {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: marquee-up 32s linear infinite;
+}
+
+.animate-marquee-down {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: marquee-down 32s linear infinite;
+}
+
+.animate-marquee-up:hover,
+.animate-marquee-down:hover {
+  animation-play-state: paused;
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "name": "FreshDM Signal Ledger",
+  "description": "A midnight-violet operational workspace where live automation data reads like a precise, high-contrast ledger.",
+  "colors": {
+    "signal-void": "#0A080C",
+    "signal-surface": "#0E0C12",
+    "signal-raised": "#130E1A",
+    "signal-deep": "#7A22B0",
+    "signal-violet": "#A24BE0",
+    "signal-orchid": "#C084FC",
+    "signal-lilac": "#D8B4FE",
+    "text-ivory": "#F4EFF6",
+    "text-mist": "#B8B1C0",
+    "text-muted": "#A49AAE",
+    "state-success": "#34D399",
+    "state-warning": "#FBBF24",
+    "state-danger": "#FB7185"
+  },
+  "typography": {
+    "display": {
+      "fontFamily": "Bebas Neue, sans-serif",
+      "fontSize": "clamp(2.25rem, 3.6vw, 3.4rem)",
+      "fontWeight": 400,
+      "lineHeight": 0.9,
+      "letterSpacing": "0.012em"
+    },
+    "hero": {
+      "fontFamily": "Bebas Neue, sans-serif",
+      "fontSize": "clamp(4.2rem, 9.2vw, 7.3rem)",
+      "fontWeight": 400,
+      "lineHeight": 0.8,
+      "letterSpacing": "0.015em"
+    },
+    "title": {
+      "fontFamily": "Inter, sans-serif",
+      "fontSize": "0.975rem",
+      "fontWeight": 650,
+      "lineHeight": 1.3,
+      "letterSpacing": "-0.012em"
+    },
+    "body": {
+      "fontFamily": "Inter, sans-serif",
+      "fontSize": "0.8125rem",
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "letterSpacing": "0em"
+    },
+    "label": {
+      "fontFamily": "Inter, sans-serif",
+      "fontSize": "0.6875rem",
+      "fontWeight": 600,
+      "lineHeight": 1.35,
+      "letterSpacing": "0.12em"
+    }
+  },
+  "rounded": {
+    "sm": "8px",
+    "md": "11px",
+    "lg": "16px",
+    "pill": "999px"
+  },
+  "spacing": {
+    "page": "clamp(18px, 2.7vw, 38px)",
+    "panel": "1.3rem",
+    "section": "1.15rem",
+    "cell": "1rem"
+  },
+  "components": {
+    "button-primary": {
+      "background": "linear-gradient(180deg, #8E2CCB 0%, #6A1C99 100%)",
+      "textColor": "#FFFFFF",
+      "rounded": "12px",
+      "height": "40px",
+      "padding": "0 16px",
+      "typography": "12px / 600"
+    },
+    "button-secondary": {
+      "background": "#0A080C",
+      "textColor": "#B8B1C0",
+      "rounded": "12px",
+      "height": "40px",
+      "padding": "0 16px",
+      "typography": "12px / 600"
+    },
+    "panel": {
+      "background": "#0E0C12",
+      "textColor": "#F4EFF6",
+      "rounded": "16px",
+      "padding": "0"
+    },
+    "status-chip": {
+      "background": "rgba(52, 211, 153, 0.10)",
+      "textColor": "#6EE7B7",
+      "rounded": "999px",
+      "padding": "4px 10px",
+      "typography": "11px / 600"
+    },
+    "segmented-control": {
+      "background": "rgba(10, 8, 12, 0.72)",
+      "textColor": "#B8B1C0",
+      "rounded": "11px",
+      "padding": "3px",
+      "typography": "12px / 600"
+    },
+    "search-field": {
+      "background": "rgba(10, 8, 12, 0.72)",
+      "textColor": "#F4EFF6",
+      "rounded": "11px",
+      "height": "40px",
+      "padding": "0 12px 0 36px",
+      "typography": "12px / 400"
+    },
+    "nav-item-active": {
+      "background": "linear-gradient(180deg, rgba(162, 75, 224, 0.24), rgba(122, 34, 176, 0.16))",
+      "textColor": "#F4EFF6",
+      "rounded": "12px",
+      "padding": "10px 12px",
+      "typography": "12.5px / 500"
+    },
+    "section-header": {
+      "background": "transparent",
+      "textColor": "#F4EFF6",
+      "rounded": "0",
+      "padding": "18px 21px",
+      "typography": "15.6px / 650"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Auth.js models
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  connections   InstagramConnection[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Instagram Integration models
+model InstagramConnection {
+  id             String    @id @default(cuid())
+  userId         String
+  igUserId       String    @unique
+  username       String
+  avatar         String?
+  accessToken    String    @db.Text // Encrypted AES-256-GCM
+  tokenExpiresAt DateTime?
+  status         String    @default("active") // "active" | "needs_reconnect" | "disconnected"
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  automations Automation[]
+
+  @@index([userId])
+  @@index([igUserId])
+}
+
+model Automation {
+  id             String   @id @default(cuid())
+  connectionId   String
+  name           String   @default("Automation")
+  mediaId        String?  // null means "Any post"
+  mediaThumbnail String?
+  mediaCaption   String?
+  keywords       String[]
+  matchMode      String   @default("contains") // "contains" | "exact" | "any_comment"
+  dmText         String   @db.Text
+  dmVariantB     String?  @db.Text // Optional A/B test variant
+  linkUrl        String?
+  linkLabel      String?
+  publicReply    String?  @db.Text
+  listenOnStories Boolean @default(false) // Whether Story mentions/replies trigger this rule
+  storyDmText    String?  @db.Text // Custom message to send when mentioned in Story
+  replyToReelShares Boolean @default(false) // Option to auto-reply when a follower shares/forwards a Reel into DM
+  reelShareDmText String? @db.Text // Custom message sent when someone forwards a Reel/Post
+  captureEmail   Boolean  @default(false) // Option 6: In-chat email capture
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  connection InstagramConnection @relation(fields: [connectionId], references: [id], onDelete: Cascade)
+  events     Event[]
+
+  @@index([connectionId])
+  @@index([mediaId])
+}
+
+model Event {
+  id                String      @id @default(cuid())
+  automationId      String?
+  connectionId      String?
+  commentId         String      @unique // Dedupes comments strictly
+  mediaId           String?
+  commenterId       String      // IGSID
+  commenterUsername String?
+  commentText       String?     @db.Text
+  commentCreatedAt  DateTime?
+
+  // Matching & Trigger Data
+  matchedKeyword    String?
+  matchStatus       String      @default("matched") // "matched" | "ignored" | "self_comment"
+
+  // Public Comment Reply Data
+  publicReplyStatus String?     // "sent" | "failed" | "none"
+  publicReplySentAt DateTime?
+  publicReplyId     String?
+
+  // DM Delivery Data
+  status            String      // "matched" | "sent" | "failed" | "skipped"
+  error             String?     @db.Text
+  apiResponseId     String?     // Message ID (MID)
+  responseTimeMs    Int?        // Difference in ms between comment and DM send
+  retryCount        Int         @default(0)
+
+  // Click Tracking Data
+  trackingSlug      String?     @unique
+  linkClicks        Int         @default(0)
+  firstClickedAt    DateTime?
+  deviceType        String?     // "mobile" | "desktop"
+
+  // Lead capture & Handover
+  capturedEmail     String?     // Captured follower email
+  isHumanHandover   Boolean     @default(false) // Option 7: Paused for human intervention
+  humanHandoverAt   DateTime?
+  variantUsed       String?     @default("A") // "A" | "B" for A/B testing
+
+  // Follow-up engagement
+  repliedInDm       Boolean     @default(false)
+  dmRepliedAt       DateTime?
+
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  automation Automation? @relation(fields: [automationId], references: [id], onDelete: SetNull)
+
+  @@index([automationId])
+  @@index([connectionId])
+  @@index([mediaId])
+  @@index([createdAt])
+  @@index([status])
+  @@index([trackingSlug])
+}
+
+model CommunityQuestion {
+  id          String   @id @default(cuid())
+  authorName  String
+  authorHandle String?
+  authorRole  String?  @default("Creator")
+  title       String
+  description String   @db.Text
+  category    String   @default("Safety & Bans")
+  isVerified  Boolean  @default(false)
+  ownerReply  String?  @db.Text
+  repliedAt   DateTime?
+  likes       Int      @default(0)
+  status      String   @default("approved")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([status])
+}
