@@ -1,122 +1,97 @@
 /* ============================================================
-   BRAND THEME CONFIG — AutoDM Followers UI Design System
-   Base Palette: Cyber Emerald / Forest Slate / Mint Green
+   BRAND THEME CONFIG — AutoDM Followers Light Mint & White Theme
+   Base Palette: White Shaded Mint / Crisp Emerald / Deep Forest Dark Text
    ============================================================ */
 
 :root {
   /* ---------- EDITORIAL REFERENCE DESIGN TOKENS ---------- */
-  --bg: #070B09;
-  --bg-glow: #0F1A14;
-  --surface: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.10);
-  --border-strong: rgba(16, 185, 129, 0.35);
-  --text: #E6EAE7;
-  --text-muted: #84938A;
-  --watermark-top: #4E6056;
-  --watermark-bot: #1E2B23;
-  --accent: #10B981;
-  --accent-hover: #059669;
-  --accent-script: #10B981;
+  --bg: #F6FAF7;
+  --bg-glow: #E8F5EE;
+  --surface: #FFFFFF;
+  --surface-muted: #EFF8F3;
+  --border: #D6EBE0;
+  --border-strong: #A9DCC3;
+  --text: #11271D;
+  --text-muted: #4E7361;
+  --text-secondary: #2B4E3C;
+  --watermark-top: #CBDED5;
+  --watermark-bot: #E6F3EC;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-script: #059669;
   --radius-card: 20px;
-  --radius-btn: 10px;
+  --radius-btn: 12px;
 
   /* ---------- 1. BRAND / CORE PALETTE (Tokens) ---------- */
-  --primary: #10B981;
-  --secondary: #064E3B;
-  --accent: #047857;
-  --muted: #0D281E;
+  --primary: #059669;
+  --secondary: #E8F7F0;
+  --accent: #10B981;
+  --muted: #E2F3EA;
 
   /* ---------- 2. STATE ---------- */
-  --destructive: #EF4444;
+  --destructive: #E11D48;
 
   /* ---------- 3. SURFACES & CANVAS ---------- */
-  --background: #080C0A;
-  --sidebar: #0C1510;
-  --sidebar-primary: #10B981;
-  --sidebar-accent: #064E3B;
-  --sidebar-border: #13271D;
+  --background: #F6FAF7;
+  --sidebar: #FFFFFF;
+  --sidebar-primary: #059669;
+  --sidebar-accent: #E8F7F0;
+  --sidebar-border: #D8ECE2;
 
   /* ---------- 4. BORDERS & INPUTS ---------- */
-  --border: #183325;
-  --input: #183325;
+  --border: #D4EAE0;
+  --input: #E0F2E9;
   --ring: #10B981;
 
   /* ---------- 5. CHARTS ---------- */
-  --chart-1: #10B981;
-  --chart-2: #34D399;
-  --chart-3: #6EE7B7;
-  --chart-4: #059669;
-  --chart-5: #047857;
+  --chart-1: #059669;
+  --chart-2: #10B981;
+  --chart-3: #34D399;
+  --chart-4: #047857;
+  --chart-5: #065F46;
 
   /* ---------- 6. DERIVED SEMANTIC ROLES ---------- */
-  --color-primary: #10B981;
-  --color-primary-hover: #34D399;
-  --color-primary-active: #059669;
-  --color-primary-light: #064E3B;
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-primary-active: #064E3B;
+  --color-primary-light: #E8F7F0;
 
-  --color-secondary: #064E3B;
-  --color-secondary-hover: #047857;
-  --color-secondary-light: #0C1510;
+  --color-secondary: #E8F7F0;
+  --color-secondary-hover: #D7F0E3;
+  --color-secondary-light: #F4FBF7;
 
   --color-accent: #10B981;
-  --color-accent-hover: #34D399;
-  --color-accent-active: #059669;
-  --color-accent-light: #064E3B;
+  --color-accent-hover: #059669;
+  --color-accent-active: #047857;
+  --color-accent-light: #E6F8F0;
 
   /* Surfaces */
-  --bg-app: #080C0A;
-  --bg-surface: #0C1510;
-  --bg-surface-alt: #121F18;
-  --bg-dark: #080C0A;
-  --bg-dark-alt: #0F1A14;
+  --bg-app: #F6FAF7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-alt: #EDF7F2;
+  --bg-dark: #E2F2E9;
+  --bg-dark-alt: #D8ECE2;
 
   /* Typography Colors */
-  --text-primary: #F0FDF4;
-  --text-secondary: #A7F3D0;
-  --text-muted: #6EE7B7;
-  --text-on-dark: #F0FDF4;
-  --text-on-accent: #022C22;
-  --text-on-primary: #022C22;
-  --text-link: #34D399;
+  --text-primary: #10271C;
+  --text-secondary: #2C4F3E;
+  --text-muted: #537866;
+  --text-on-dark: #10271C;
+  --text-on-accent: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --text-link: #059669;
 
   /* Borders & Lines */
-  --border-default: #183325;
-  --border-strong: #10B981;
-  --border-dark: #0D281E;
+  --border-default: #D6EBE0;
+  --border-strong: #059669;
+  --border-dark: #BEDECF;
 
   /* State Semantics */
-  --state-success: #4DB6AC;
-  --state-success-bg: rgba(77, 182, 172, 0.16);
-  --state-warning: #FFB74D;
-  --state-warning-bg: rgba(255, 183, 77, 0.16);
-  --state-error: #FF5470;
-  --state-error-bg: rgba(255, 84, 112, 0.18);
-  --state-info: #64B5F6;
-  --state-info-bg: rgba(100, 181, 246, 0.16);
+  --state-success: #059669;
+  --state-success-bg: #E6F8F0;
+  --state-warning: #D97706;
+  --state-warning-bg: #FEF3C7;
 
-  /* Live & Interactive Indicators */
-  --live-indicator: #FF5470;
-  --live-indicator-bg: rgba(255, 84, 112, 0.22);
-  --interactive-focus-ring: #A48FFF;
-
-  /* ---------- 7. ELEVATION / SHADOWS ---------- */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.6);
-  --shadow-md: 0 4px 18px rgba(16, 16, 32, 0.7);
-  --shadow-lg: 0 12px 38px rgba(10, 10, 22, 0.85);
-  --shadow-button: rgba(255, 255, 255, 0.2) 0px 2px 1px 0px inset;
-
-  /* ---------- 8. DESIGN TOKENS (Screenshot Specification) ---------- */
-  --radius: 0.5rem; /* 8px */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-card: 8px;
-  --radius-pill: 9999px;
-  --spacing-base: 0.25rem; /* 4px */
-  --letter-spacing: 0em;
-
-  /* Typography stack */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Georgia', Cambria, 'Times New Roman', Times, serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --live-indicator: #059669;
+  --live-indicator-bg: #D1FAE5;
 }

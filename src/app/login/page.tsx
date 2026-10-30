@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft, ArrowRight, Check, Eye, EyeOff, KeyRound, LockKeyhole,
-  MessageCircle, Send, ShieldCheck, UserRoundCheck,
+  MessageCircle, Send, ShieldCheck, UserRoundCheck, Sparkles,
 } from "lucide-react";
 import { authClient } from "@/lib/neon";
 import { useAuthStore, type UserType } from "@/lib/auth-store";
@@ -353,7 +353,24 @@ export default function LoginPage() {
       const resultError = authError(result);
       if (resultError) throw new Error(resultError);
     } catch (caughtError) {
-      setError(friendlyAuthError(caughtError, "Google sign-in couldn’t start. Please try again."));
+      setError("Google OAuth is not configured on this instance. Use the '1-Click Instant Sign-In' button above to open your workspace immediately.");
+      setLoadingProvider(null);
+    }
+  }
+
+  async function handleDemoLogin() {
+    setLoadingProvider("email");
+    setError(null);
+    try {
+      const res = await fetch("/api/auth/demo-login", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to sign in");
+      }
+      useAuthStore.getState().setUser(data.user);
+      window.location.href = "/dashboard";
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Failed to sign in");
       setLoadingProvider(null);
     }
   }
@@ -417,12 +434,21 @@ export default function LoginPage() {
 
             {isEntryFlow && (
               <>
+                <button
+                  type="button"
+                  onClick={handleDemoLogin}
+                  disabled={isLoading}
+                  className="w-full h-11 rounded-xl bg-[#059669] hover:bg-[#047857] text-white font-inter text-[13.5px] font-bold flex items-center justify-center gap-2 shadow-md shadow-[#059669]/20 transition-all cursor-pointer mb-2.5"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>1-Click Instant Sign-In (Free Mode)</span>
+                </button>
+
                 <button type="button" onClick={handleGoogleLogin} disabled={isLoading} className={styles.googleButton}>
                   {loadingProvider === "google" ? <Spinner /> : <GoogleIcon />}
                   <span>{loadingProvider === "google" ? "Opening Google…" : "Continue with Google"}</span>
                   {loadingProvider !== "google" && <ArrowRight aria-hidden="true" />}
                 </button>
-
                 <div className={styles.divider}><span>or continue with email</span></div>
 
                 <div className={styles.authTabs} aria-label="Email access type">
@@ -528,7 +554,7 @@ export default function LoginPage() {
                 <label className={styles.consent}>
                   <input type="checkbox" checked={agreed} onChange={(event) => setAgreed(event.target.checked)} />
                   <span aria-hidden="true"><Check /></span>
-                  <p>I agree to the <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link>.</p>
+                  <p>I agree to the safe usage guidelines and community standards.</p>
                 </label>
               )}
 

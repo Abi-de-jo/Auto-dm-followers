@@ -264,12 +264,6 @@ export function AppLayout({ children }: AppLayoutProps) {
                     <span>Auto-reply rules</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/terms" className="w-full">
-                    <HelpCircle className="h-3.5 w-3.5 text-[#A49AAE]" aria-hidden="true" />
-                    <span>Help &amp; guidelines</span>
-                  </Link>
-                </DropdownMenuItem>
               </DropdownMenuGroup>
 
               <DropdownMenuSeparator className="bg-white/[0.075]" />

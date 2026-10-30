@@ -324,8 +324,8 @@ function PlanCard({
     <article
       className={`pricing-plan-card pricing-reveal group relative flex flex-col overflow-hidden rounded-[20px] border p-6 transition-[transform,border-color,background-color] duration-300 sm:p-7 motion-safe:hover:-translate-y-1 ${
         featured
-          ? "border-[#10B981]/60 bg-[linear-gradient(180deg,#0D281E_0%,#080C0A_58%)] hover:border-[#34D399]/80"
-          : "border-white/[0.08] bg-[#0C1510] hover:border-[#10B981]/45 hover:bg-[#0E1A14]"
+          ? "border-[#059669] bg-white ring-2 ring-[#059669]/20 shadow-xl"
+          : "border-[#D5EAE0] bg-white shadow-md hover:border-[#059669]/40"
       } ${className}`}
     >
       <span
@@ -348,22 +348,22 @@ function PlanCard({
             <span
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] border ${
                 featured
-                  ? "border-[#34D399]/35 bg-[#10B981]/25 text-[#A7F3D0]"
-                  : "border-white/[0.08] bg-white/[0.04] text-[#10B981]"
+                  ? "border-[#059669]/30 bg-[#E8F7F0] text-[#059669]"
+                  : "border-[#D5EAE0] bg-[#F4FBF7] text-[#059669]"
               }`}
             >
               <Icon className="h-[18px] w-[18px]" />
             </span>
-            <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-[#F4EFF6]">
+            <h3 className="text-[15px] font-bold tracking-[-0.01em] text-[#11271D]">
               {name}
             </h3>
           </div>
           {chip && (
             <span
-              className={`shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-semibold leading-none ${
+              className={`shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-bold leading-none ${
                 featured
-                  ? "border-transparent bg-[#10B981] text-black"
-                  : "border-[#34D399]/30 bg-[#10B981]/20 text-[#A7F3D0]"
+                  ? "border-transparent bg-[#059669] text-white"
+                  : "border-[#059669]/30 bg-[#E8F7F0] text-[#059669]"
               }`}
             >
               {chip}
@@ -372,26 +372,26 @@ function PlanCard({
         </div>
 
         <div className="mt-7 flex items-end gap-1.5">
-          <span className="inline-flex items-baseline font-bold tabular-nums text-[#F4EFF6]">
-            <span className="mr-1 text-2xl font-semibold text-[#B8B1C0]">{symbol}</span>
+          <span className="inline-flex items-baseline font-bold tabular-nums text-[#11271D]">
+            <span className="mr-1 text-2xl font-semibold text-[#527060]">{symbol}</span>
             <span
-              className="price-count text-[52px] leading-[0.9] tracking-[-0.035em]"
+              className="price-count text-[52px] leading-[0.9] tracking-[-0.035em] text-[#11271D]"
               data-value={price}
             >
               {price}
             </span>
           </span>
-          <span className="pb-1.5 text-[13px] font-medium text-[#A49AAE]">/ month</span>
+          <span className="pb-1.5 text-[13px] font-medium text-[#527060]">/ month</span>
         </div>
-        <p className="mt-2.5 text-[11px] font-medium text-[#A49AAE]">
+        <p className="mt-2.5 text-[11px] font-medium text-[#527060]">
           {isYearly ? "Billed yearly · save 20%" : "Billed monthly"}
         </p>
 
-        <div className="mt-6 flex-1 border-t border-white/[0.06] pt-5">
+        <div className="mt-6 flex-1 border-t border-[#D5EAE0] pt-5">
           <ul className="space-y-2.5">
             {bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-2.5 text-[13px] leading-snug text-[#B8B1C0]">
-                <CheckIcon className="mt-[1px] h-3.5 w-3.5 shrink-0 text-[#C084FC]" />
+              <li key={bullet} className="flex items-start gap-2.5 text-[13px] leading-snug text-[#3B5D4D]">
+                <CheckIcon className="mt-[1px] h-3.5 w-3.5 shrink-0 text-[#059669]" />
                 <span>{bullet}</span>
               </li>
             ))}
@@ -400,10 +400,10 @@ function PlanCard({
 
         <Link
           href="/login"
-          className={`group/cta mt-6 inline-flex h-11 w-full items-center justify-center rounded-[12px] px-4 text-[12px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C0A] ${
+          className={`group/cta mt-6 inline-flex h-11 w-full items-center justify-center rounded-[12px] px-4 text-[12px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#059669]/60 ${
             featured
-              ? "bg-[linear-gradient(180deg,#10B981_0%,#059669_100%)] text-black font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_rgba(16,185,129,0.28)] hover:brightness-[1.08]"
-              : "border border-white/[0.1] bg-[#080C0A] text-[#E6EAE7] hover:border-[#10B981]/50 hover:bg-[#0D281E]"
+              ? "bg-[#059669] text-white font-bold shadow-md shadow-[#059669]/20 hover:bg-[#047857]"
+              : "border border-[#D5EAE0] bg-[#F4FBF7] text-[#11271D] hover:bg-white hover:border-[#059669]"
           }`}
         >
           {cta}
@@ -600,7 +600,7 @@ export function PricingSection() {
       id="pricing"
       ref={containerRef}
       aria-labelledby="pricing-heading"
-      className="relative w-full scroll-mt-24 overflow-hidden border-t border-white/[0.08] bg-[#0A080C] py-20 font-sans text-[#E6E3E8] sm:py-28 lg:py-32"
+      className="relative w-full scroll-mt-24 overflow-hidden border-t border-[#D5EAE0] bg-[#F6FAF7] py-20 font-sans text-[#11271D] sm:py-28 lg:py-32"
     >
       <div
         aria-hidden="true"
@@ -618,26 +618,26 @@ export function PricingSection() {
           <div className="max-w-2xl">
             <h2
               id="pricing-heading"
-              className="font-bebas text-4xl leading-[1.02] tracking-[-0.035em] text-[#F4EFF6] sm:text-5xl lg:text-[52px]"
+              className="font-bebas text-4xl leading-[1.02] tracking-[-0.035em] text-[#11271D] sm:text-5xl lg:text-[52px]"
             >
-              Pricing <span className="text-[#C084FC]">details</span>
+              Pricing <span className="text-[#059669]">details</span>
             </h2>
-            <p className="mt-3.5 font-inter text-sm leading-relaxed text-[#B8B1C0] sm:text-base">
+            <p className="mt-3.5 font-inter text-sm leading-relaxed text-[#4E7361] sm:text-base">
               Pick the plan that fits your creator audience and start automating DMs in 60 seconds.
             </p>
           </div>
 
           <div className="flex flex-col gap-2.5 lg:items-end">
-            <div className="inline-flex flex-wrap items-center gap-1 rounded-[14px] border border-white/[0.08] bg-[#0E0C12] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+            <div className="inline-flex flex-wrap items-center gap-1 rounded-[14px] border border-[#D5EAE0] bg-white p-1 shadow-sm">
               <div role="group" aria-label="Billing cycle" className="flex items-center">
                 <button
                   type="button"
                   aria-pressed={!isYearly}
                   onClick={() => setBillingCycle("monthly")}
-                  className={`h-9 rounded-[10px] px-3.5 text-xs font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]/60 sm:px-4 ${
+                  className={`h-9 rounded-[10px] px-3.5 text-xs font-semibold transition-colors duration-200 ${
                     !isYearly
-                      ? "bg-[linear-gradient(180deg,#10B981_0%,#059669_100%)] text-black font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
-                      : "text-[#84938A] hover:bg-white/[0.04] hover:text-[#F4EFF6]"
+                      ? "bg-[#059669] text-white font-bold shadow-sm"
+                      : "text-[#527060] hover:bg-[#E8F7F0] hover:text-[#059669]"
                   }`}
                 >
                   Monthly
@@ -646,10 +646,10 @@ export function PricingSection() {
                   type="button"
                   aria-pressed={isYearly}
                   onClick={() => setBillingCycle("yearly")}
-                  className={`flex h-9 items-center gap-1.5 rounded-[10px] px-3.5 text-xs font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]/60 sm:px-4 ${
+                  className={`flex h-9 items-center gap-1.5 rounded-[10px] px-3.5 text-xs font-semibold transition-colors duration-200 ${
                     isYearly
-                      ? "bg-[linear-gradient(180deg,#10B981_0%,#059669_100%)] text-black font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
-                      : "text-[#84938A] hover:bg-white/[0.04] hover:text-[#F4EFF6]"
+                      ? "bg-[#059669] text-white font-bold shadow-sm"
+                      : "text-[#527060] hover:bg-[#E8F7F0] hover:text-[#059669]"
                   }`}
                 >
                   <span>Yearly</span>
@@ -670,10 +670,10 @@ export function PricingSection() {
                   type="button"
                   aria-pressed={isINR}
                   onClick={() => setCurrency("INR")}
-                  className={`h-9 rounded-[10px] px-3 text-xs font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]/60 sm:px-3.5 ${
+                  className={`h-9 rounded-[10px] px-3 text-xs font-semibold transition-colors duration-200 ${
                     isINR
-                      ? "bg-[linear-gradient(180deg,#10B981_0%,#059669_100%)] text-black font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
-                      : "text-[#84938A] hover:bg-white/[0.04] hover:text-[#F4EFF6]"
+                      ? "bg-[#059669] text-white font-bold shadow-sm"
+                      : "text-[#527060] hover:bg-[#E8F7F0] hover:text-[#059669]"
                   }`}
                 >
                   <span>₹ INR</span>
@@ -682,10 +682,10 @@ export function PricingSection() {
                   type="button"
                   aria-pressed={!isINR}
                   onClick={() => setCurrency("USD")}
-                  className={`h-9 rounded-[10px] px-3 text-xs font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]/60 sm:px-3.5 ${
+                  className={`h-9 rounded-[10px] px-3 text-xs font-semibold transition-colors duration-200 ${
                     !isINR
-                      ? "bg-[linear-gradient(180deg,#10B981_0%,#059669_100%)] text-black font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
-                      : "text-[#84938A] hover:bg-white/[0.04] hover:text-[#F4EFF6]"
+                      ? "bg-[#059669] text-white font-bold shadow-sm"
+                      : "text-[#527060] hover:bg-[#E8F7F0] hover:text-[#059669]"
                   }`}
                 >
                   <span>$ USD</span>
@@ -704,7 +704,7 @@ export function PricingSection() {
         </div>
 
         <div id="pricing-plans-block">
-          <div className="pricing-reveal relative mb-6 overflow-hidden rounded-[20px] border border-[#10B981]/25 bg-[linear-gradient(105deg,rgba(16,185,129,0.20)_0%,rgba(13,40,30,0.9)_42%,#0C1510_100%)]">
+          <div className="pricing-reveal relative mb-6 overflow-hidden rounded-[20px] border border-[#D5EAE0] bg-white p-6 shadow-md">
             <div aria-hidden="true" className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 opacity-40 sm:block">
               <svg width="280" height="280" viewBox="0 0 280 280" fill="none">
                 <circle cx="140" cy="140" r="58" stroke="#34D399" strokeOpacity="0.35" />

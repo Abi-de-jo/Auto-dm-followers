@@ -20,8 +20,8 @@ export function Navbar() {
 
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 w-full h-[80px] transition-colors duration-200 ${
-        scrolled ? "bg-[#0A080C]/95" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 w-full h-[76px] transition-all duration-200 ${
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-[#D5EAE0]" : "bg-[#F6FAF7]/80 backdrop-blur-sm"
       }`}
     >
       <div className="h-full w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] items-center">
@@ -29,40 +29,34 @@ export function Navbar() {
         {/* --- LEFT: LOGO --- */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-inter text-[20px] font-extrabold tracking-[-0.03em] text-white leading-none">
-              Auto<span className="text-[#10B981]">DM</span>
+            <span className="font-inter text-[20px] font-black tracking-[-0.03em] text-[#11271D] leading-none">
+              Auto<span className="text-[#059669]">DM</span>
             </span>
-            <span className="rounded-md bg-[#059669]/20 border border-[#10B981]/30 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase text-[#34D399]">
+            <span className="rounded-md bg-[#059669]/10 border border-[#10B981]/30 px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase text-[#059669]">
               Followers
             </span>
           </Link>
         </div>
 
         {/* --- CENTER: LINKS --- */}
-        <nav className="hidden md:flex items-center justify-center gap-10">
-          <Link
-            href="/#features"
-            className="font-inter font-medium text-[15px] text-[#8C8890] hover:text-[#E6E3E8] transition-colors duration-150"
-          >
-            Features
-          </Link>
-          <Link
-            href="/#how-it-works"
-            className="font-inter font-medium text-[15px] text-[#8C8890] hover:text-[#E6E3E8] transition-colors duration-150"
-          >
-            How it works
-          </Link>
+        <nav className="hidden md:flex items-center justify-center gap-8">
           <Link
             href="/#how-to-connect"
-            className="font-inter font-medium text-[15px] text-[#8C8890] hover:text-[#E6E3E8] transition-colors duration-150"
+            className="font-inter font-semibold text-[14px] text-[#3B5D4D] hover:text-[#059669] transition-colors"
           >
             How to connect
           </Link>
           <Link
             href="/#pricing"
-            className="font-inter font-medium text-[15px] text-[#8C8890] hover:text-[#E6E3E8] transition-colors duration-150"
+            className="font-inter font-semibold text-[14px] text-[#3B5D4D] hover:text-[#059669] transition-colors"
           >
             Pricing
+          </Link>
+          <Link
+            href="/#faq"
+            className="font-inter font-semibold text-[14px] text-[#3B5D4D] hover:text-[#059669] transition-colors"
+          >
+            Common FAQs
           </Link>
         </nav>
 
@@ -76,7 +70,7 @@ export function Navbar() {
             <div className="hidden sm:flex items-center gap-6">
               <Link
                 href="/login"
-                className="font-inter font-medium text-[15px] text-[#8C8890] hover:text-[#E6E3E8] transition-colors duration-150"
+                className="font-inter font-semibold text-[14px] text-[#3B5D4D] hover:text-[#059669] transition-colors"
               >
                 Sign in
               </Link>
@@ -100,7 +94,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-[#E6E3E8] hover:text-white"
+              className="p-2 text-[#11271D] hover:text-[#059669]"
               aria-label="Toggle navigation menu"
             >
               <svg
@@ -122,7 +116,7 @@ export function Navbar() {
 
       {/* --- MOBILE COLLAPSED MENU --- */}
       {mobileOpen && (
-        <div className="md:hidden border-b border-[rgba(255,255,255,0.12)] bg-[#0A080C] px-6 pt-4 pb-6">
+        <div className="md:hidden border-b border-[#D5EAE0] bg-white px-6 pt-4 pb-6 shadow-md">
           <nav className="flex flex-col space-y-4">
             <Link
               href="/#features"

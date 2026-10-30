@@ -43,8 +43,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark h-full antialiased ${inter.variable} ${jetbrainsMono.variable} ${anton.variable} font-sans`}
-      data-theme="dark"
+      className={`h-full antialiased ${inter.variable} ${jetbrainsMono.variable} ${anton.variable} font-sans bg-[#F6FAF7] text-[#11271D]`}
+      data-theme="light"
       style={{ letterSpacing: "0em" }}
     >
       <head>

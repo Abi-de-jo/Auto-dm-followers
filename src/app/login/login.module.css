@@ -1,13 +1,13 @@
 .page {
-  --ink: #17131a;
-  --paper: #f2eef3;
-  --paper-deep: #e8e1eb;
-  --void: #0a080c;
-  --surface: #110d15;
+  --ink: #11271D;
+  --paper: #FFFFFF;
+  --paper-deep: #F4FBF7;
+  --void: #EDF7F2;
+  --surface: #FFFFFF;
   --violet: #059669;
-  --orchid: #10b981;
-  --lilac: #6ee7b7;
-  --ivory: #f4eff6;
+  --orchid: #10B981;
+  --lilac: #34D399;
+  --ivory: #11271D;
   min-height: 100vh;
   overflow: hidden;
   background: var(--void);
@@ -125,8 +125,8 @@
   overflow: hidden;
   padding: 34px clamp(42px, 5vw, 80px) 30px;
   background:
-    radial-gradient(ellipse 90% 74% at 68% 48%, rgba(16, 185, 129, 0.20), transparent 70%),
-    var(--void);
+    radial-gradient(ellipse 90% 74% at 68% 48%, rgba(16, 185, 129, 0.15), transparent 70%),
+    #EDF7F2;
 }
 
 .preview::before { content: ""; position: absolute; right: -20%; bottom: -35%; width: 75%; aspect-ratio: 1; border: 1px solid rgba(110, 231, 183, 0.08); border-radius: 50%; box-shadow: 0 0 0 100px rgba(16, 185, 129, 0.025), 0 0 0 200px rgba(16, 185, 129, 0.015); }
@@ -135,8 +135,8 @@
 .runningState i { width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 1px 7px rgba(52, 211, 153, 0.55); }
 
 .previewStatement { position: relative; z-index: 2; width: min(100%, 730px); margin: clamp(62px, 8vh, 92px) auto 0; }
-.previewStatement h2 { max-width: 700px; font-size: clamp(3.6rem, 5.7vw, 5.8rem); font-weight: 700; line-height: 0.89; letter-spacing: -0.04em; text-wrap: balance; }
-.previewStatement p { max-width: 475px; margin-top: 22px; color: #aca3b3; font-size: 0.84rem; line-height: 1.6; }
+.previewStatement h2 { max-width: 700px; font-size: clamp(3.6rem, 5.7vw, 5.8rem); font-weight: 700; line-height: 0.89; letter-spacing: -0.04em; text-wrap: balance; color: #11271D; }
+.previewStatement p { max-width: 475px; margin-top: 22px; color: #3B5D4D; font-size: 0.84rem; line-height: 1.6; }
 
 .signalScene { position: relative; z-index: 2; width: min(100%, 730px); height: clamp(340px, 42vh, 430px); margin: clamp(30px, 5vh, 54px) auto 0; }
 .signalPath { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
@@ -144,7 +144,7 @@
 .pathBase { stroke: rgba(216, 180, 254, 0.18); }
 .pathPulse { stroke: url("#unused"); stroke: var(--orchid); stroke-dasharray: 3 22; opacity: 0.75; animation: pathFlow 2.8s linear infinite; }
 
-.signalMoment { position: absolute; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; min-width: 260px; padding: 13px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.13); color: var(--ivory); }
+.signalMoment { position: absolute; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; min-width: 260px; padding: 13px 0; border-bottom: 1px solid rgba(5, 150, 105, 0.15); color: #11271D; }
 .momentComment { top: 0; left: 0; width: 43%; }
 .momentReply { top: 35%; left: 31%; width: 52%; }
 .momentLead { right: 0; bottom: 0; width: 43%; }

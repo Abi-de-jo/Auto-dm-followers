@@ -96,6 +96,20 @@ export async function getAppUser(): Promise<AppUser | null> {
   } catch {
     cookieStore = null;
   }
+  // 0. Check AutoDM demo session cookie (for 1-click free mode)
+  if (cookieStore) {
+    const demoUserId = cookieStore.get("autodm_demo_session")?.value;
+    if (demoUserId) {
+      try {
+        const demoUser = await prisma.user.findUnique({ where: { id: demoUserId } });
+        if (demoUser) {
+          return { id: demoUser.id, name: demoUser.name, email: demoUser.email, image: demoUser.image };
+        }
+      } catch {
+        // Continue
+      }
+    }
+  }
 
   // 1. Check NextAuth session (signed and verified by NextAuth)
   try {

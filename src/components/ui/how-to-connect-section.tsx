@@ -11,7 +11,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Inline SVGs matching rulebook (1.5 stroke, clean vector icons)
 function SlidersIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -71,246 +70,196 @@ const STEPS = [
     badge: "STEP 01",
     shortName: "Professional",
     title: "Switch to a Professional Account",
-    subtitle: "Takes 10 seconds in Instagram Settings",
+    subtitle: "Required by Meta's Official Instagram Graph API",
     description:
-      "Open your Instagram profile > Settings > Account Type and switch to a free Creator or Business account. This enables official Meta Graph API message permissions.",
+      "Open Instagram Settings > Account Type and switch to Creator or Business. It is 100% free and takes 10 seconds. This unlocks official API permissions for automated direct messaging.",
     icon: SlidersIcon,
-    tag: "Free & Instant",
-    estTime: "10 sec",
+    timeEst: "10 sec",
   },
   {
     id: 2,
     badge: "STEP 02",
     shortName: "Connect Meta",
-    title: "Tap Connect in FreshDM",
-    subtitle: "Official Meta Login for Business",
+    title: "Authorize via Official Meta Login",
+    subtitle: "End-to-end OAuth 2.0 security dialog",
     description:
-      "Log into your FreshDM dashboard and click 'Connect Instagram'. We redirect you through Meta's secure authorization dialog — you never share your Instagram password.",
+      "Tap connect, allow access for @codebyabi in seconds through official authorization. No password needed, safe and secure.",
     icon: InstagramIcon,
-    tag: "No Password Needed",
-    estTime: "15 sec",
+    timeEst: "20 sec",
   },
   {
     id: 3,
     badge: "STEP 03",
     shortName: "Permissions",
-    title: "Allow Required Permissions",
-    subtitle: "Read comments & send direct replies",
+    title: "Enable Messaging Permissions",
+    subtitle: "Comment reading and DM dispatch capabilities",
     description:
-      "Meta prompts you to select the Instagram account you wish to manage and approve message delivery. Toggle permissions ON and tap 'Allow' to finish linking.",
+      "Check the permissions box for 'Manage Comments' and 'Send Direct Messages'. AutoDM strictly complies with Meta's developer policies and only triggers actions when requested.",
     icon: ShieldCheckIcon,
-    tag: "100% Meta Compliant",
-    estTime: "15 sec",
+    timeEst: "15 sec",
   },
   {
     id: 4,
     badge: "STEP 04",
-    shortName: "Live 24/7",
-    title: "You're Connected & Live 24/7",
-    subtitle: "Instant comment-to-DM triggers",
+    shortName: "Automate",
+    title: "Ready to Automate on Autopilot",
+    subtitle: "Create keyword rules and start replying",
     description:
-      "Pick any Reel, set keyword triggers like 'PRICE' or 'LINK', and test it live. FreshDM will automatically reply to comments and send DMs to anyone who asks.",
+      "Pick any Reel or post, type your keyword (e.g. 'PRICE' or 'LINK'), and write your automated reply. AutoDM begins listening and replying to followers 24/7.",
     icon: CheckCircleIcon,
-    tag: "Ready for Traffic",
-    estTime: "20 sec",
+    timeEst: "15 sec",
   },
 ];
 
 export function HowToConnectSection() {
-  const lenis = useLenis();
   const containerRef = useRef<HTMLDivElement>(null);
+  const leftStickyRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const progressTextRef = useRef<HTMLSpanElement>(null);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState<number>(1);
+
+  const lenis = useLenis();
+
+  const handleStepJump = (stepId: number) => {
+    setActiveStep(stepId);
+    const targetEl = document.getElementById(`step-card-${stepId}`);
+    if (targetEl) {
+      if (lenis) {
+        lenis.scrollTo(targetEl, { offset: -120, duration: 1.1 });
+      } else {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia();
+      if (!containerRef.current) return;
 
-      mm.add("(prefers-reduced-motion: no-preference) and (min-width: 1024px)", () => {
-        // Pin left column so only the right side cards scroll
-        ScrollTrigger.create({
-          trigger: "#how-to-connect-grid",
-          start: "top 90px",
-          end: "bottom bottom",
-          pin: "#connect-left-column",
-          pinSpacing: false,
-          anticipatePin: 1,
-        });
-      });
+      const cards = gsap.utils.toArray<HTMLElement>(".step-parallax-card");
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // 1. Differential Background Parallax Aura
-        gsap.to("#connect-bg-aura", {
-          y: 260,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 0.8,
-          },
-        });
+      cards.forEach((card, index) => {
+        const stepNum = index + 1;
+        const watermark = card.querySelector(".step-watermark");
 
-        // 2. Parallax Watermark Numbers in cards
-        const cards = gsap.utils.toArray<HTMLElement>(".step-parallax-card");
-        cards.forEach((card, index) => {
-          const watermark = card.querySelector(".step-watermark");
-          if (watermark) {
-            gsap.fromTo(
-              watermark,
-              { y: 50, opacity: 0.02 },
-              {
-                y: -40,
-                opacity: 0.07,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: card,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 0.5,
-                },
-              }
-            );
-          }
-
-          // Card focal scale & glow when scrolling through viewport
+        if (watermark) {
           gsap.fromTo(
-            card,
-            { scale: 0.96, opacity: 0.7 },
+            watermark,
+            { y: -30, opacity: 0.04 },
             {
-              scale: 1,
-              opacity: 1,
-              ease: "power2.out",
+              y: 30,
+              opacity: 0.1,
+              ease: "none",
               scrollTrigger: {
                 trigger: card,
-                start: "top 78%",
-                end: "top 35%",
-                scrub: 0.5,
-                onEnter: () => setActiveStep(index + 1),
-                onEnterBack: () => setActiveStep(index + 1),
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.2,
               },
             }
           );
-        });
+        }
 
-        // 3. Overall Steps Progress Bar Scrub
-        let lastPct = 25;
         ScrollTrigger.create({
-          trigger: "#steps-cards-container",
-          start: "top 70%",
-          end: "bottom 60%",
-          scrub: 0.3,
-          onUpdate: (self) => {
-            const pct = Math.max(15, Math.min(100, Math.round(self.progress * 100)));
-            if (pct === lastPct) return;
-            lastPct = pct;
-            if (progressBarRef.current) progressBarRef.current.style.width = `${pct}%`;
-            if (progressTextRef.current) progressTextRef.current.textContent = `${pct}%`;
-          },
+          trigger: card,
+          start: "top center+=80",
+          end: "bottom center",
+          onEnter: () => updateProgress(stepNum),
+          onEnterBack: () => updateProgress(stepNum),
         });
       });
 
-      mm.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.set(".step-parallax-card", { opacity: 1, scale: 1 });
-      });
+      function updateProgress(step: number) {
+        setActiveStep(step);
+        const percent = Math.round((step / 4) * 100);
+
+        if (progressBarRef.current) {
+          gsap.to(progressBarRef.current, {
+            width: `${percent}%`,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        }
+        if (progressTextRef.current) {
+          progressTextRef.current.textContent = `${percent}%`;
+        }
+      }
     },
     { scope: containerRef }
   );
 
-  const scrollToStep = (id: number) => {
-    const el = document.querySelector(`#step-card-${id}`);
-    if (!el) return;
-    if (lenis) {
-      lenis.scrollTo(el as HTMLElement, { offset: -96, duration: 1.1 });
-    } else {
-      el.scrollIntoView({ block: "center" });
-    }
-  };
   return (
     <section
       id="how-to-connect"
       ref={containerRef}
-      className="relative w-full bg-[#0A080C] py-20 sm:py-28 lg:py-32 overflow-clip font-sans border-t border-white/[0.08] select-none text-[#E6E3E8]"
+      className="relative w-full bg-[#F6FAF7] py-20 sm:py-28 lg:py-32 overflow-clip font-sans border-t border-[#D5EAE0] select-none text-[#11271D]"
     >
-      {/* Background Parallax Violet Aura */}
-      <div
-        id="connect-bg-aura"
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(122, 34, 176, 0.12) 0%, rgba(162, 75, 224, 0.04) 45%, transparent 72%)",
-        }}
-      />
-
-      <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div id="how-to-connect-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start relative">
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Heading + Setup Card (Static pin while right side scrolls) */}
-          <div id="connect-left-column" className="lg:col-span-5 lg:sticky lg:top-24 space-y-8 text-left">
+          {/* Left Sticky Progress Column */}
+          <div
+            ref={leftStickyRef}
+            className="lg:col-span-5 lg:sticky lg:top-28 space-y-6 text-left"
+          >
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#7A22B0]/30 bg-[#7A22B0]/15 px-3 py-1 text-xs font-semibold text-[#D8B4FE] mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C084FC] animate-pulse" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#059669]/30 bg-[#E8F7F0] px-3 py-1 text-xs font-semibold text-[#059669] mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
                 <span>FAST 60-SECOND ONBOARDING</span>
               </div>
 
-              {/* Title */}
-              <h2 className="font-bebas text-4xl sm:text-5xl lg:text-[52px] tracking-[-0.035em] leading-[1.02] text-[#E6E3E8]">
-                How to <span className="text-[#A24BE0]">Connect</span>
+              <h2 className="font-bebas text-4xl sm:text-5xl lg:text-[52px] tracking-[-0.035em] leading-[1.02] text-[#11271D]">
+                How to <span className="text-[#059669]">Connect</span>
               </h2>
 
-              {/* Description */}
-              <p className="mt-3.5 font-inter text-sm sm:text-base text-[#8C8890] leading-relaxed">
-                Follow the 4 simple steps to connect your Instagram account with official Meta authorization.
+              <p className="mt-4 text-sm sm:text-base text-[#4E7361] leading-relaxed">
+                Connect your account in four simple steps through official Meta authorization dialogs. No passwords, no risk, active in 60 seconds.
               </p>
             </div>
 
-            {/* Setup Progress & Guarantee Card (Styled like FAQ support card) */}
-            <div className="rounded-[24px] bg-[#0E0C12] border border-white/[0.08] p-6 sm:p-7 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_32px_rgba(0,0,0,0.4)] hover:border-[#7A22B0]/40 transition-all duration-300 space-y-5">
+            {/* Setup Progress Card */}
+            <div className="rounded-[24px] bg-white border border-[#D5EAE0] p-6 sm:p-7 shadow-lg shadow-[#059669]/5 hover:border-[#059669]/40 transition-all duration-300 space-y-5">
               <div className="flex items-center justify-between">
-                <h3 className="font-sans text-lg sm:text-xl font-bold text-white tracking-tight">
+                <h3 className="font-sans text-lg sm:text-xl font-bold text-[#11271D] tracking-tight">
                   Live Setup Tracker
                 </h3>
-                <span className="text-xs font-mono font-bold text-[#C084FC] bg-[#7A22B0]/20 border border-[#7A22B0]/40 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs font-mono font-bold text-[#059669] bg-[#E8F7F0] border border-[#10B981]/30 px-2.5 py-0.5 rounded-full">
                   STEP 0{activeStep} / 04
                 </span>
               </div>
 
-              {/* Progress Rail */}
               <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs text-[#8C8890] font-mono">
+                <div className="flex justify-between text-xs text-[#527060]">
                   <span>SETUP PROGRESS</span>
-                  <span ref={progressTextRef} className="text-white font-bold">25%</span>
+                  <span ref={progressTextRef} className="text-[#11271D] font-bold">25%</span>
                 </div>
-                <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden relative">
+                <div className="h-2 w-full bg-[#E2F2E9] rounded-full overflow-hidden relative">
                   <div
                     ref={progressBarRef}
-                    className="h-full bg-gradient-to-r from-[#7A22B0] via-[#A24BE0] to-[#C084FC] rounded-full"
+                    className="h-full bg-gradient-to-r from-[#059669] via-[#10B981] to-[#34D399] rounded-full"
                     style={{ width: "25%" }}
                   />
                 </div>
               </div>
 
-              {/* 4 Step Clickable Quick-Jump Pills */}
+              {/* Step Navigation Buttons */}
               <div className="grid grid-cols-2 gap-2 pt-1">
                 {STEPS.map((step) => {
                   const isActive = activeStep === step.id;
                   return (
                     <button
                       key={step.id}
-                      type="button"
-                      onClick={() => scrollToStep(step.id)}
-                      className={`text-left p-2.5 rounded-xl border transition-all duration-200 cursor-pointer ${
+                      onClick={() => handleStepJump(step.id)}
+                      className={`text-left p-2.5 rounded-xl border transition-all text-xs ${
                         isActive
-                          ? "bg-[#7A22B0]/25 border-[#A24BE0]/50 shadow-[0_4px_16px_rgba(122,34,176,0.25)] text-white"
-                          : "bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.05] hover:border-white/[0.12] text-[#8C8890]"
+                          ? "bg-[#E8F7F0] border-[#059669] text-[#059669] font-bold shadow-sm"
+                          : "bg-[#F8FCF9] border-[#D5EAE0] hover:bg-white text-[#527060]"
                       }`}
                     >
-                      <span className="block text-[10px] font-mono font-bold opacity-75">
+                      <span className="block text-[10px] uppercase font-mono text-[#4E7361]">
                         0{step.id}
                       </span>
-                      <span className="block text-[11px] font-semibold truncate text-[#E6E3E8]">
+                      <span className="block text-[11px] font-semibold truncate text-[#11271D]">
                         {step.shortName}
                       </span>
                     </button>
@@ -318,15 +267,14 @@ export function HowToConnectSection() {
                 })}
               </div>
 
-              {/* Meta Safety Guarantee */}
-              <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between gap-3 text-xs text-[#8C8890]">
+              <div className="pt-3 border-t border-[#D5EAE0] flex items-center justify-between text-xs text-[#527060]">
                 <div className="flex items-center gap-2">
-                  <ShieldCheckIcon className="w-4 h-4 text-[#A24BE0] shrink-0" />
+                  <ShieldCheckIcon className="w-4 h-4 text-[#059669] shrink-0" />
                   <span>Meta Verified • Zero Passwords</span>
                 </div>
                 <Link
                   href="/login"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#D8B4FE] hover:text-white font-semibold transition-colors shrink-0"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#059669] hover:underline font-bold shrink-0"
                 >
                   <span>Connect</span>
                   <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -335,8 +283,8 @@ export function HowToConnectSection() {
             </div>
           </div>
 
-          {/* Right Column: 4 Minimal Parallax Step Cards (7 of 12 cols) */}
-          <div id="steps-cards-container" className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
+          {/* Right Column: Step Cards */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             {STEPS.map((step) => {
               const Icon = step.icon;
               const isActive = activeStep === step.id;
@@ -345,120 +293,107 @@ export function HowToConnectSection() {
                 <div
                   key={step.id}
                   id={`step-card-${step.id}`}
-                  className={`step-parallax-card relative rounded-[24px] p-6 sm:p-8 bg-gradient-to-b from-[#130E1A]/90 to-[#0A080C]/98 border shadow-[0_16px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden transition-all duration-300 ${
-                    isActive ? "border-[#A24BE0]/50 shadow-[0_20px_50px_rgba(122,34,176,0.2)]" : "border-white/[0.08]"
+                  className={`step-parallax-card relative rounded-[24px] p-6 sm:p-8 bg-white border shadow-md transition-all duration-300 text-left ${
+                    isActive ? "border-[#059669] ring-2 ring-[#059669]/20 shadow-xl" : "border-[#D5EAE0]"
                   }`}
                 >
-                  {/* Parallax Floating Watermark Number */}
-                  <span className="step-watermark absolute -right-3 -bottom-7 font-bebas text-[140px] sm:text-[170px] leading-none text-white/[0.035] select-none pointer-events-none font-bold">
+                  <span className="step-watermark absolute -right-3 -bottom-7 font-bebas text-[140px] sm:text-[170px] leading-none text-[#059669]/[0.06] select-none pointer-events-none font-bold">
                     0{step.id}
                   </span>
 
-                  {/* Top Specular Edge Highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-
-                  {/* Card Header Row */}
-                  <div className="relative z-10 flex items-center justify-between gap-4 mb-5">
+                  <div className="relative z-10 flex items-center justify-between pb-4 border-b border-[#D5EAE0]">
                     <div className="flex items-center gap-3">
-                      <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-[#8E2CCB] to-[#5A1688] flex items-center justify-center text-white font-mono text-xs font-bold shadow-md shadow-[#7A22B0]/30 border border-white/20">
+                      <div className="h-9 w-9 rounded-xl bg-[#059669] flex items-center justify-center text-white font-mono text-xs font-bold shadow-md shadow-[#059669]/25">
                         0{step.id}
                       </div>
-                      <span className="text-[10.5px] font-bold tracking-wider font-mono text-[#D8B4FE] uppercase px-2.5 py-0.5 rounded-full bg-[#7A22B0]/20 border border-[#A24BE0]/30">
+                      <span className="text-[10.5px] font-bold tracking-wider font-mono text-[#059669] uppercase px-2.5 py-0.5 rounded-full bg-[#E8F7F0] border border-[#10B981]/30">
                         {step.badge}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-medium text-[#8C8890] px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06]">
-                        {step.tag}
+                    <div className="flex items-center gap-3">
+                      <span className="text-[11px] font-mono font-medium text-[#527060]">
+                        ⏱ {step.timeEst}
                       </span>
-                      <div className="h-8 w-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#A24BE0]">
+                      <div className="h-8 w-8 rounded-lg bg-[#E8F7F0] border border-[#D5EAE0] flex items-center justify-center text-[#059669]">
                         <Icon className="h-4 w-4" />
                       </div>
                     </div>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="relative z-10 space-y-2">
-                    <h3 className="text-xl sm:text-[22px] font-bold text-white tracking-tight leading-snug">
+                  <div className="relative z-10 space-y-2 mt-4">
+                    <h3 className="text-xl sm:text-[22px] font-bold text-[#11271D] tracking-tight leading-snug">
                       {step.title}
                     </h3>
-                    <p className="text-xs sm:text-[13px] font-medium text-[#C084FC]">
+                    <p className="text-xs sm:text-[13px] font-semibold text-[#059669]">
                       {step.subtitle}
                     </p>
-                    <p className="text-xs sm:text-[13.5px] text-[#8C8890] leading-relaxed pt-1">
+                    <p className="text-sm text-[#4E7361] leading-relaxed pt-1">
                       {step.description}
                     </p>
-                  </div>
 
-                  {/* Step Visual Preview Chip */}
-                  <div className="relative z-10 mt-5 pt-4 border-t border-white/[0.06]">
+                    {/* Step Visual Elements */}
                     {step.id === 1 && (
-                      <div className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                        <div className="flex items-center gap-2.5">
-                          <div className="h-7 w-7 rounded-lg bg-[#E1306C]/15 border border-[#E1306C]/25 flex items-center justify-center text-[#E1306C]">
-                            <InstagramIcon className="w-3.5 h-3.5" />
-                          </div>
+                      <div className="mt-4 p-3.5 rounded-xl bg-[#F4FBF7] border border-[#D5EAE0] flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src="/avatars/owner.png"
+                            alt="codebyabi"
+                            className="w-9 h-9 rounded-full object-cover border border-[#059669]"
+                          />
                           <div>
-                            <span className="text-[11px] font-bold text-white block">Instagram Account Type</span>
-                            <span className="text-[10px] text-[#8C8890]">Settings &gt; Account &gt; Switch</span>
+                            <span className="text-[12px] font-bold text-[#11271D] block">Instagram Creator Account</span>
+                            <span className="text-[11px] text-[#527060]">@codebyabi (Verified Creator)</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold text-[#D8B4FE]">Creator Mode</span>
-                          <div className="w-7 h-4 rounded-full bg-[#7A22B0] p-0.5 flex justify-end items-center">
-                            <div className="w-3 h-3 rounded-full bg-white shadow-sm" />
-                          </div>
+                          <span className="text-[11px] font-bold text-[#059669]">Active</span>
+                          <span className="h-2 w-2 rounded-full bg-[#10B981]" />
                         </div>
                       </div>
                     )}
 
                     {step.id === 2 && (
-                      <div className="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                      <div className="mt-4 p-3.5 rounded-xl bg-[#F4FBF7] border border-[#D5EAE0] flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
-                          <div className="h-7 w-7 rounded-lg bg-[#0081FB]/15 border border-[#0081FB]/25 flex items-center justify-center text-[#0081FB]">
-                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
-                              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
+                          <div className="w-8 h-8 rounded-lg bg-[#059669] flex items-center justify-center text-white">
+                            <InstagramIcon className="w-4 h-4" />
                           </div>
                           <div>
-                            <span className="text-[11px] font-bold text-white block">Meta Login for Business</span>
-                            <span className="text-[10px] text-emerald-400">OAuth 2.0 Official Authorization</span>
+                            <span className="text-[12px] font-bold text-[#11271D] block">Meta Official OAuth 2.0</span>
+                            <span className="text-[11px] text-[#059669]">Encrypted Token Security</span>
                           </div>
                         </div>
-                        <span className="text-[9.5px] font-mono text-emerald-300 px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/30">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#059669] bg-[#E8F7F0] px-2 py-0.5 rounded-md">
                           Verified
                         </span>
                       </div>
                     )}
 
                     {step.id === 3 && (
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                          <CheckCircleIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                          <span className="text-[11px] font-medium text-white truncate">Read Comments</span>
+                      <div className="mt-4 grid grid-cols-2 gap-2.5">
+                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#F4FBF7] border border-[#D5EAE0]">
+                          <CheckCircleIcon className="w-3.5 h-3.5 text-[#059669] shrink-0" />
+                          <span className="text-[11px] font-semibold text-[#11271D] truncate">Read Comments</span>
                         </div>
-                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                          <CheckCircleIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                          <span className="text-[11px] font-medium text-white truncate">Send Direct Replies</span>
+                        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#F4FBF7] border border-[#D5EAE0]">
+                          <CheckCircleIcon className="w-3.5 h-3.5 text-[#059669] shrink-0" />
+                          <span className="text-[11px] font-semibold text-[#11271D] truncate">Send Direct Replies</span>
                         </div>
                       </div>
                     )}
 
                     {step.id === 4 && (
-                      <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#7A22B0]/20 to-[#A24BE0]/10 border border-[#A24BE0]/30">
+                      <div className="mt-4 flex items-center justify-between p-3 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30">
                         <div className="flex items-center gap-2.5">
-                          <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                          </span>
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#10B981] animate-ping" />
                           <div>
-                            <span className="text-[11px] font-bold text-white block">FreshDM Automation Engine</span>
-                            <span className="text-[10px] text-[#D8B4FE]">Listening for keyword triggers 24/7</span>
+                            <span className="text-[11px] font-bold text-[#11271D] block">AutoDM Automation Engine</span>
+                            <span className="text-[10px] text-[#059669]">Listening for keyword triggers 24/7</span>
                           </div>
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                          ACTIVE
+                        <span className="text-[10px] font-bold text-[#059669] bg-white px-2 py-0.5 rounded border border-[#10B981]/30">
+                          Ready
                         </span>
                       </div>
                     )}
@@ -470,20 +405,25 @@ export function HowToConnectSection() {
 
         </div>
 
-        {/* Minimal Bottom Quick Action */}
-        <div className="mt-16 sm:mt-20 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs sm:text-[13px] text-[#8C8890] text-center sm:text-left">
-            Ready to turn comments into sales? Setup takes under 60 seconds with zero password sharing.
-          </p>
+        {/* Bottom Banner */}
+        <div className="mt-16 sm:mt-20 p-6 sm:p-8 rounded-[24px] bg-white border border-[#D5EAE0] shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="space-y-1">
+            <h4 className="font-bebas text-2xl sm:text-3xl text-[#11271D] tracking-wide">
+              Ready to Connect in 60 Seconds?
+            </h4>
+            <p className="text-xs sm:text-sm text-[#4E7361]">
+              Free open Instagram automation. No credit card required.
+            </p>
+          </div>
+
           <Link
             href="/login"
-            className="inline-flex items-center gap-2 h-10 px-6 rounded-xl bg-[#7A22B0] hover:bg-[#8E2CCB] text-white font-inter text-xs font-semibold shadow-lg shadow-[#7A22B0]/25 transition-all hover:scale-[1.02] active:scale-[0.98] shrink-0"
+            className="inline-flex items-center gap-2 h-11 px-7 rounded-xl bg-[#059669] hover:bg-[#047857] text-white font-inter text-xs sm:text-sm font-bold shadow-md shadow-[#059669]/25 transition-all hover:scale-[1.02] active:scale-[0.98] shrink-0"
           >
             <span>Connect with Instagram</span>
             <ArrowRightIcon className="w-3.5 h-3.5" />
           </Link>
         </div>
-
       </div>
     </section>
   );

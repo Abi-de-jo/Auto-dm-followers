@@ -99,9 +99,8 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative w-full bg-[#0A080C] py-20 sm:py-28 lg:py-32 overflow-clip font-sans border-t border-white/[0.08] select-none text-[#E6E3E8]"
+      className="relative w-full bg-[#F6FAF7] py-20 sm:py-28 lg:py-32 overflow-clip font-sans border-t border-[#D5EAE0] select-none text-[#11271D]"
     >
-      {/* Background Soft Purple Aura */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/4 top-1/3 h-[350px] w-[750px] rounded-full"
@@ -114,37 +113,33 @@ export function FAQSection() {
           {/* Left Column: Heading + Support Card */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-8 text-left">
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-[#7A22B0]/30 bg-[#7A22B0]/15 px-3 py-1 text-xs font-semibold text-[#D8B4FE] mb-4">
-                <HelpCircleIcon className="h-3.5 w-3.5 text-[#A24BE0]" />
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-[#059669]/30 bg-[#E8F7F0] px-3 py-1 text-xs font-semibold text-[#059669] mb-4">
+                <HelpCircleIcon className="h-3.5 w-3.5 text-[#059669]" />
                 <span>FREQUENTLY ASKED QUESTIONS</span>
               </div>
 
-              {/* Title */}
-              <h2 className="font-bebas text-4xl sm:text-5xl lg:text-[52px] tracking-[-0.035em] leading-[1.02] text-[#E6E3E8]">
+              <h2 className="font-bebas text-4xl sm:text-5xl lg:text-[52px] tracking-[-0.035em] leading-[1.02] text-[#11271D]">
                 Have more questions?
               </h2>
 
-              {/* Description */}
-              <p className="mt-3.5 font-inter text-sm sm:text-base text-[#8C8890] leading-relaxed">
+              <p className="mt-3.5 font-inter text-sm sm:text-base text-[#4E7361] leading-relaxed">
                 Everything you need to know about setting up official Instagram comment-to-DM automations with zero stress.
               </p>
             </div>
 
-            {/* Support Contact Card */}
-            <div className="rounded-[24px] bg-[#0E0C12] border border-white/[0.08] p-6 sm:p-7 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_32px_rgba(0,0,0,0.4)] hover:border-[#7A22B0]/40 transition-all duration-300">
-              <h3 className="font-sans text-lg sm:text-xl font-bold text-white tracking-tight">
+            <div className="rounded-[24px] bg-white border border-[#D5EAE0] p-6 sm:p-7 shadow-md hover:border-[#059669]/40 transition-all duration-300">
+              <h3 className="font-sans text-lg sm:text-xl font-bold text-[#11271D] tracking-tight">
                 Can&apos;t find your answer?
               </h3>
-              <p className="mt-2 text-xs sm:text-[13px] text-[#8C8890] leading-relaxed">
-                Our support team is available 24/7 to help you connect your Instagram account or set up custom keyword workflows.
+              <p className="mt-2 text-xs sm:text-[13px] text-[#4E7361] leading-relaxed">
+                Need help setting up your Instagram connection or custom keyword automations? Get in touch directly.
               </p>
               <div className="mt-6">
                 <Link
-                  href="mailto:support@freshdm.io"
-                  className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#7A22B0] hover:bg-[#8E2CCB] text-white font-inter text-xs sm:text-[13px] font-semibold px-6 py-2.5 transition-all shadow-lg shadow-[#7A22B0]/30 hover:scale-[1.02] active:scale-[0.98] cursor-pointer group"
+                  href="mailto:support@codebyabi.com"
+                  className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#059669] hover:bg-[#047857] text-white font-inter text-xs sm:text-[13px] font-bold px-6 py-2.5 transition-all shadow-md shadow-[#059669]/20 hover:scale-[1.02] active:scale-[0.98] cursor-pointer group"
                 >
-                  <span>Contact support</span>
+                  <span>support@codebyabi.com</span>
                   <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
@@ -161,8 +156,8 @@ export function FAQSection() {
                   key={faq.id}
                   className={`rounded-[20px] border transition-all duration-200 overflow-hidden ${
                     isOpen
-                      ? "border-[#7A22B0]/60 bg-gradient-to-b from-[#130E1A] to-[#0E0C12] shadow-lg shadow-[#7A22B0]/10"
-                      : "border-white/[0.08] bg-[#0E0C12] hover:border-white/[0.15] hover:bg-white/[0.02]"
+                      ? "border-[#059669] bg-white ring-2 ring-[#059669]/20 shadow-md"
+                      : "border-[#D5EAE0] bg-white shadow-sm hover:border-[#059669]/40"
                   }`}
                 >
                   <button
@@ -171,15 +166,15 @@ export function FAQSection() {
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-sm sm:text-base font-bold text-white leading-snug">
+                    <span className="text-sm sm:text-base font-bold text-[#11271D] leading-snug">
                       {faq.question}
                     </span>
 
                     <span
                       className={`h-7 w-7 rounded-full shrink-0 flex items-center justify-center transition-transform duration-200 ${
                         isOpen
-                          ? "bg-[#7A22B0] text-white rotate-180"
-                          : "bg-white/[0.05] border border-white/10 text-[#8C8890]"
+                          ? "bg-[#059669] text-white rotate-180"
+                          : "bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669]"
                       }`}
                     >
                       <ChevronDownIcon className="h-3.5 w-3.5" />
@@ -194,7 +189,7 @@ export function FAQSection() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.22, ease: "easeInOut" }}
                       >
-                        <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-xs sm:text-[13px] text-[#8C8890] leading-relaxed border-t border-white/[0.06] mt-1">
+                        <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-xs sm:text-[13px] text-[#4E7361] leading-relaxed border-t border-[#D5EAE0] mt-1">
                           <p className="pt-3">{faq.answer}</p>
                         </div>
                       </motion.div>
