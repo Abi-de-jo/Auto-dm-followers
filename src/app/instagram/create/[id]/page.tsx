@@ -442,8 +442,8 @@ export default function AutomationCreatePage() {
         ======================================================== */}
         {currentStep <= 5 && (
           <SignalPanel className="space-y-3 p-4 sm:p-5">
-            <div className="flex items-center justify-between gap-3 text-xs text-[#A49AAE]">
-              <span className="font-mono font-semibold text-[#D8B4FE]">
+            <div className="flex items-center justify-between gap-3 text-xs text-[#527060]">
+              <span className="font-mono font-semibold text-[#059669]">
                 Step {currentStep} of 5
               </span>
               <span className="font-mono uppercase tracking-[0.08em]">
@@ -475,7 +475,7 @@ export default function AutomationCreatePage() {
                     }}
                     className={`p-2.5 sm:p-3 rounded-2xl border text-left transition-all ${
                       isCurrent
-                        ? "bg-[#7A22B0]/25 border-[#A24BE0] ring-1 ring-[#7A22B0]/40 text-white shadow-lg shadow-[#7A22B0]/20"
+                        ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40 text-[#059669] font-bold shadow-md"
                         : isCompleted
                         ? "bg-[#0A080C] border-emerald-500/30 text-emerald-400 cursor-pointer"
                         : "bg-[#0A080C] border-white/[0.08] text-[#8C8890] opacity-60 cursor-not-allowed"
@@ -520,16 +520,16 @@ export default function AutomationCreatePage() {
                   onClick={() => setGoal("send_messages")}
                   className={`p-6 rounded-[24px] border cursor-pointer transition-all flex flex-col justify-between space-y-4 ${
                     goal === "send_messages"
-                      ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                      ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                       : "bg-[#0A080C] border-white/[0.08] hover:border-white/20"
                   }`}
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-xl bg-[#7A22B0]/25 border border-[#7A22B0]/40 text-[#D8B4FE] flex items-center justify-center">
-                        <Send className="h-5 w-5 text-[#A24BE0]" />
+                      <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center">
+                        <Send className="h-5 w-5 text-[#059669]" />
                       </div>
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#7A22B0]/30 border border-[#A24BE0]/40 text-[#D8B4FE] text-[10px] font-mono font-bold uppercase">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] text-[10px] font-mono font-bold uppercase">
                         Popular
                       </span>
                     </div>
@@ -542,8 +542,8 @@ export default function AutomationCreatePage() {
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-[#D8B4FE]">
-                    <strong>Example:</strong> Someone comments &quot;LINK&quot; on your Reel, and FreshDM sends them your link privately.
+                  <div className="p-3 rounded-xl bg-[#F4FBF7] border border-[#D5EAE0] text-[11px] text-[#3B5D4D]">
+                    <strong>Example:</strong> Someone comments &quot;LINK&quot; on your Reel, and AutoDM sends them your link privately.
                   </div>
                 </div>
 
@@ -557,14 +557,14 @@ export default function AutomationCreatePage() {
                   }}
                   className={`p-6 rounded-[24px] border cursor-pointer transition-all flex flex-col justify-between space-y-4 ${
                     goal === "collect_email"
-                      ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                      ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                       : "bg-[#0A080C] border-white/[0.08] hover:border-white/20"
                   }`}
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[#D8B4FE] flex items-center justify-center">
-                        <Mail className="h-5 w-5 text-[#A24BE0]" />
+                      <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center">
+                        <Mail className="h-5 w-5 text-[#059669]" />
                       </div>
                       <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[10px] font-mono font-bold uppercase">
                         Included
@@ -579,7 +579,7 @@ export default function AutomationCreatePage() {
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-[#D8B4FE]">
+                  <div className="p-3 rounded-xl bg-[#F4FBF7] border border-[#D5EAE0] text-[11px] text-[#3B5D4D]">
                     <strong>Example:</strong> Ask followers for their email address in DM and save it automatically to your lead list.
                   </div>
                 </div>
@@ -588,7 +588,7 @@ export default function AutomationCreatePage() {
               <div className="pt-4 flex justify-end border-t border-white/[0.06]">
                 <Button
                   onClick={handleContinueFromStep1}
-                  className="bg-[#7A22B0] hover:bg-[#8E2CCB] text-white rounded-xl gap-2 px-6 py-2.5 font-bold cursor-pointer"
+                  className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl gap-2 px-6 py-2.5 font-bold cursor-pointer"
                 >
                   <span>{isReturningToReview ? "Save Changes & Return to Review" : "Continue"}</span>
                   <ChevronRight className="h-4 w-4" />
@@ -627,19 +627,19 @@ export default function AutomationCreatePage() {
                       }}
                       className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                         commentReplyFlow === "comment_dm_and_public"
-                          ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                          ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                           : "bg-[#0A080C] border-white/[0.08] hover:border-white/15"
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3.5">
-                          <div className="h-10 w-10 rounded-xl bg-[#7A22B0]/25 border border-[#7A22B0]/40 text-[#D8B4FE] flex items-center justify-center shrink-0">
-                            <MessageSquare className="h-5 w-5 text-[#A24BE0]" />
+                          <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shrink-0">
+                            <MessageSquare className="h-5 w-5 text-[#059669]" />
                           </div>
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="font-bold text-base text-white block">Comment → Send Private DM + Reply Publicly</span>
-                              <span className="px-2 py-0.5 rounded-full bg-[#7A22B0]/30 border border-[#A24BE0]/40 text-[#D8B4FE] text-[9px] font-bold uppercase">
+                              <span className="px-2 py-0.5 rounded-full bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] text-[9px] font-bold uppercase">
                                 Recommended
                               </span>
                             </div>
@@ -651,7 +651,7 @@ export default function AutomationCreatePage() {
                         <div
                           className={`h-5 w-5 rounded-full border flex items-center justify-center shrink-0 ${
                             commentReplyFlow === "comment_dm_and_public"
-                              ? "bg-[#7A22B0] border-[#A24BE0] text-white"
+                              ? "bg-[#059669] border-[#059669] text-white"
                               : "border-white/20"
                           }`}
                         >
@@ -668,14 +668,14 @@ export default function AutomationCreatePage() {
                       }}
                       className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                         commentReplyFlow === "comment_dm_only"
-                          ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                          ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                           : "bg-[#0A080C] border-white/[0.08] hover:border-white/15"
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3.5">
-                          <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[#D8B4FE] flex items-center justify-center shrink-0">
-                            <Send className="h-5 w-5 text-[#A24BE0]" />
+                          <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shrink-0">
+                            <Send className="h-5 w-5 text-[#059669]" />
                           </div>
                           <div className="space-y-1">
                             <span className="font-bold text-base text-white block">Only Send Private DM</span>
@@ -687,7 +687,7 @@ export default function AutomationCreatePage() {
                         <div
                           className={`h-5 w-5 rounded-full border flex items-center justify-center shrink-0 ${
                             commentReplyFlow === "comment_dm_only"
-                              ? "bg-[#7A22B0] border-[#A24BE0] text-white"
+                              ? "bg-[#059669] border-[#059669] text-white"
                               : "border-white/20"
                           }`}
                         >
@@ -704,14 +704,14 @@ export default function AutomationCreatePage() {
                       }}
                       className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                         commentReplyFlow === "comment_public_only"
-                          ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                          ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                           : "bg-[#0A080C] border-white/[0.08] hover:border-white/15"
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3.5">
-                          <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[#D8B4FE] flex items-center justify-center shrink-0">
-                            <CornerDownRight className="h-5 w-5 text-[#A24BE0]" />
+                          <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shrink-0">
+                            <CornerDownRight className="h-5 w-5 text-[#059669]" />
                           </div>
                           <div className="space-y-1">
                             <span className="font-bold text-base text-white block">Only Reply to Public Comment</span>
@@ -723,7 +723,7 @@ export default function AutomationCreatePage() {
                         <div
                           className={`h-5 w-5 rounded-full border flex items-center justify-center shrink-0 ${
                             commentReplyFlow === "comment_public_only"
-                              ? "bg-[#7A22B0] border-[#A24BE0] text-white"
+                              ? "bg-[#059669] border-[#059669] text-white"
                               : "border-white/20"
                           }`}
                         >
@@ -744,14 +744,14 @@ export default function AutomationCreatePage() {
                     onClick={() => setListenOnStories(!listenOnStories)}
                     className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                       listenOnStories
-                        ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                        ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                         : "bg-[#0A080C] border-white/[0.08] hover:border-white/15"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-start gap-3.5">
-                        <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[#D8B4FE] flex items-center justify-center shrink-0">
-                          <Zap className="h-5 w-5 text-[#A24BE0]" />
+                        <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shrink-0">
+                          <Zap className="h-5 w-5 text-[#059669]" />
                         </div>
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
@@ -767,7 +767,7 @@ export default function AutomationCreatePage() {
                       </div>
                       <div
                         className={`h-5 w-5 rounded-md border flex items-center justify-center shrink-0 ${
-                          listenOnStories ? "bg-[#7A22B0] border-[#A24BE0] text-white" : "border-white/20"
+                          listenOnStories ? "bg-[#059669] border-[#059669] text-white" : "border-[#D5EAE0]"
                         }`}
                       >
                         {listenOnStories && <Check className="h-3.5 w-3.5" />}
@@ -786,14 +786,14 @@ export default function AutomationCreatePage() {
                     onClick={() => setReplyToReelShares(!replyToReelShares)}
                     className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                       replyToReelShares
-                        ? "bg-[#7A22B0]/20 border-[#A24BE0] ring-1 ring-[#7A22B0]/40"
+                        ? "bg-[#E8F7F0] border-[#059669] ring-1 ring-[#059669]/40"
                         : "bg-[#0A080C] border-white/[0.08] hover:border-white/15"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-start gap-3.5">
-                        <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[#D8B4FE] flex items-center justify-center shrink-0">
-                          <Video className="h-5 w-5 text-[#A24BE0]" />
+                        <div className="h-10 w-10 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] flex items-center justify-center shrink-0">
+                          <Video className="h-5 w-5 text-[#059669]" />
                         </div>
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
@@ -809,7 +809,7 @@ export default function AutomationCreatePage() {
                       </div>
                       <div
                         className={`h-5 w-5 rounded-md border flex items-center justify-center shrink-0 ${
-                          replyToReelShares ? "bg-[#7A22B0] border-[#A24BE0] text-white" : "border-white/20"
+                          replyToReelShares ? "bg-[#059669] border-[#059669] text-white" : "border-[#D5EAE0]"
                         }`}
                       >
                         {replyToReelShares && <Check className="h-3.5 w-3.5" />}
@@ -829,7 +829,7 @@ export default function AutomationCreatePage() {
                 </Button>
                 <Button
                   onClick={handleContinueFromStep2}
-                  className="bg-[#7A22B0] hover:bg-[#8E2CCB] text-white rounded-xl gap-2 font-bold cursor-pointer"
+                  className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl gap-2 font-bold cursor-pointer"
                 >
                   <span>{isReturningToReview ? "Save Changes & Return to Review" : "Choose Posts"}</span>
                   <ChevronRight className="h-4 w-4" />
@@ -858,7 +858,7 @@ export default function AutomationCreatePage() {
                   onClick={() => setPostSelectionMode("specific")}
                   className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                     postSelectionMode === "specific"
-                      ? "bg-[#7A22B0]/20 border-[#A24BE0] text-white"
+                      ? "bg-[#E8F7F0] border-[#059669] text-[#059669] font-bold"
                       : "bg-[#0A080C] border-white/[0.08] text-[#8C8890]"
                   }`}
                 >
@@ -872,7 +872,7 @@ export default function AutomationCreatePage() {
                   onClick={() => setPostSelectionMode("all_posts")}
                   className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                     postSelectionMode === "all_posts"
-                      ? "bg-[#7A22B0]/20 border-[#A24BE0] text-white"
+                      ? "bg-[#E8F7F0] border-[#059669] text-[#059669] font-bold"
                       : "bg-[#0A080C] border-white/[0.08] text-[#8C8890]"
                   }`}
                 >
@@ -886,7 +886,7 @@ export default function AutomationCreatePage() {
                   onClick={() => setPostSelectionMode("next_post")}
                   className={`p-4 rounded-2xl border cursor-pointer transition-all ${
                     postSelectionMode === "next_post"
-                      ? "bg-[#7A22B0]/20 border-[#A24BE0] text-white"
+                      ? "bg-[#E8F7F0] border-[#059669] text-[#059669] font-bold"
                       : "bg-[#0A080C] border-white/[0.08] text-[#8C8890]"
                   }`}
                 >
@@ -913,7 +913,7 @@ export default function AutomationCreatePage() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-[#D8B4FE]">
+                      <span className="text-xs font-mono text-[#059669] font-bold">
                         {selectedPostIds.length} {selectedPostIds.length === 1 ? "post selected" : "posts selected"}
                       </span>
 
@@ -924,7 +924,7 @@ export default function AutomationCreatePage() {
                         onClick={fetchMediaPosts}
                         className="bg-[#0A080C] border-white/[0.08] text-[#8C8890] hover:text-white rounded-xl text-xs gap-1.5"
                       >
-                        <RefreshCw className={`h-3 w-3 ${loadingMedia ? "animate-spin text-[#A24BE0]" : ""}`} />
+                        <RefreshCw className={`h-3 w-3 ${loadingMedia ? "animate-spin text-[#059669]" : ""}`} />
                         <span>Refresh Posts</span>
                       </Button>
                     </div>
@@ -943,7 +943,7 @@ export default function AutomationCreatePage() {
                       <p className="text-xs text-[#8C8890]">
                         No posts found. Refresh your posts or check your Instagram connection.
                       </p>
-                      <Button size="sm" onClick={fetchMediaPosts} className="bg-[#7A22B0] text-white rounded-xl text-xs">
+                      <Button size="sm" onClick={fetchMediaPosts} className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl text-xs">
                         Refresh Posts
                       </Button>
                     </div>
@@ -960,7 +960,7 @@ export default function AutomationCreatePage() {
                               onClick={() => handleTogglePostSelection(m.id)}
                               className={`group aspect-[9/13] rounded-2xl overflow-hidden border cursor-pointer relative transition-all ${
                                 isSelected
-                                  ? "border-2 border-[#A24BE0] ring-2 ring-[#7A22B0]/40 shadow-lg shadow-[#7A22B0]/30"
+                                  ? "border-2 border-[#059669] ring-2 ring-[#059669]/30 shadow-md"
                                   : "border-white/[0.08] hover:border-white/20"
                               }`}
                             >
@@ -986,7 +986,7 @@ export default function AutomationCreatePage() {
                               <div className="absolute top-2 right-2">
                                 <div
                                   className={`h-5 w-5 rounded-md border flex items-center justify-center ${
-                                    isSelected ? "bg-[#7A22B0] border-[#A24BE0] text-white" : "border-white/40 bg-black/40"
+                                    isSelected ? "bg-[#059669] border-[#059669] text-white" : "border-white/40 bg-black/40"
                                   }`}
                                 >
                                   {isSelected && <Check className="h-3.5 w-3.5" />}
@@ -1018,7 +1018,7 @@ export default function AutomationCreatePage() {
                 </Button>
                 <Button
                   onClick={handleContinueFromStep3}
-                  className="bg-[#7A22B0] hover:bg-[#8E2CCB] text-white rounded-xl gap-2 font-bold cursor-pointer"
+                  className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl gap-2 font-bold cursor-pointer"
                 >
                   <span>{isReturningToReview ? "Save Changes & Return to Review" : "Choose Words"}</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1039,7 +1039,7 @@ export default function AutomationCreatePage() {
                 <p className="text-xs sm:text-sm text-[#8C8890]">
                   Choose the words people can comment or send you to receive an automatic reply.
                 </p>
-                <p className="text-[11px] text-[#D8B4FE] font-medium pt-0.5">
+                <p className="text-[11px] text-[#059669] font-medium pt-0.5">
                   💡 Not case-sensitive: typing &quot;LINK&quot;, &quot;Link&quot;, or &quot;link&quot; will all trigger the response.
                 </p>
               </div>
@@ -1065,7 +1065,7 @@ export default function AutomationCreatePage() {
                   <Button
                     type="button"
                     onClick={handleAddKeyword}
-                    className="h-12 px-5 bg-[#7A22B0] hover:bg-[#8E2CCB] text-white font-bold rounded-xl self-end cursor-pointer"
+                    className="h-12 px-5 bg-[#059669] hover:bg-[#047857] text-white font-bold rounded-xl self-end cursor-pointer"
                   >
                     Add Word
                   </Button>
@@ -1076,7 +1076,7 @@ export default function AutomationCreatePage() {
                   {keywords.map((kw) => (
                     <span
                       key={kw}
-                      className="px-3 py-1.5 rounded-xl bg-[#7A22B0]/20 border border-[#7A22B0]/40 text-[#D8B4FE] text-xs font-bold font-mono flex items-center gap-2"
+                      className="px-3 py-1.5 rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 text-[#059669] text-xs font-bold font-mono flex items-center gap-2"
                     >
                       {kw}
                       <button
@@ -1097,9 +1097,9 @@ export default function AutomationCreatePage() {
                     variant="secondary"
                     size="sm"
                     onClick={handleSuggestWords}
-                    className="bg-[#0A080C] border-white/[0.08] text-[#D8B4FE] hover:text-white rounded-xl text-xs gap-1.5"
+                    className="bg-[#F4FBF7] border-[#D5EAE0] text-[#059669] hover:bg-white rounded-xl text-xs gap-1.5"
                   >
-                    <Lightbulb className="h-3.5 w-3.5 text-[#A24BE0]" />
+                    <Lightbulb className="h-3.5 w-3.5 text-[#059669]" />
                     <span>Suggest Words</span>
                   </Button>
                 </div>
@@ -1132,7 +1132,7 @@ export default function AutomationCreatePage() {
                 </Button>
                 <Button
                   onClick={handleContinueFromStep4}
-                  className="bg-[#7A22B0] hover:bg-[#8E2CCB] text-white rounded-xl gap-2 font-bold cursor-pointer"
+                  className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl gap-2 font-bold cursor-pointer"
                 >
                   <span>{isReturningToReview ? "Save Changes & Return to Review" : "Write My Message"}</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1197,7 +1197,7 @@ export default function AutomationCreatePage() {
                         <button
                           type="button"
                           onClick={() => setUseSecondMessage(!useSecondMessage)}
-                          className="text-xs text-[#A24BE0] hover:text-[#D8B4FE] font-medium cursor-pointer"
+                          className="text-xs text-[#059669] hover:underline font-medium cursor-pointer"
                         >
                           {useSecondMessage ? "Remove" : "+ Add alternative DM"}
                         </button>
@@ -1311,7 +1311,7 @@ export default function AutomationCreatePage() {
                           <button
                             type="button"
                             onClick={() => setUseSecondPublicReply(!useSecondPublicReply)}
-                            className="text-xs text-[#A24BE0] hover:text-[#D8B4FE] font-medium cursor-pointer"
+                            className="text-xs text-[#059669] hover:underline font-medium cursor-pointer"
                           >
                             {useSecondPublicReply ? "Remove" : "+ Add alternative comment"}
                           </button>
@@ -1336,14 +1336,14 @@ export default function AutomationCreatePage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="space-y-0.5 min-w-0">
                           <h4 className="font-bold text-xs sm:text-sm text-white flex items-center gap-2">
-                            <Zap className="h-4 w-4 text-[#A24BE0] shrink-0" />
+                            <Zap className="h-4 w-4 text-[#059669] shrink-0" />
                             <span className="truncate">Story Mentions Reply</span>
                           </h4>
                           <p className="text-[11px] text-[#8C8890]">
                             Sent privately when someone tags your account in their Story.
                           </p>
                         </div>
-                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#D8B4FE] bg-[#7A22B0]/20 border border-[#A24BE0]/30 px-2 py-0.5 rounded-full shrink-0">
+                        <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#059669] bg-[#E8F7F0] border border-[#10B981]/30 px-2 py-0.5 rounded-full shrink-0">
                           Story Add-on
                         </span>
                       </div>
@@ -1404,7 +1404,7 @@ export default function AutomationCreatePage() {
 
                       {/* Header */}
                       <div className="pt-2 pb-2.5 border-b border-zinc-900 flex items-center gap-2">
-                        <div className="h-8 w-8 rounded-full bg-[#7A22B0] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        <div className="h-8 w-8 rounded-full bg-[#059669] text-white flex items-center justify-center font-bold text-xs shrink-0">
                           {(connection?.username || "Y")[0].toUpperCase()}
                         </div>
                         <div className="min-w-0 flex-1">
@@ -1443,14 +1443,14 @@ export default function AutomationCreatePage() {
                           <p className="leading-relaxed whitespace-pre-wrap">{dmText}</p>
                           {hasLink && linkUrl && (
                             useButton ? (
-                              <div className="rounded-xl bg-[#7A22B0]/25 border border-[#A24BE0]/50 p-2 flex items-center justify-between text-[10.5px]">
+                              <div className="rounded-xl bg-[#E8F7F0] border border-[#10B981]/30 p-2 flex items-center justify-between text-[10.5px]">
                                 <span className="text-white font-semibold truncate pr-1">
                                   {linkLabel || "Tap to Open"}
                                 </span>
-                                <span className="text-[#D8B4FE] font-bold text-[10px]">→</span>
+                                <span className="text-[#059669] font-bold text-[10px]">→</span>
                               </div>
                             ) : (
-                              <div className="text-[10.5px] text-[#A24BE0] underline break-all font-mono">
+                              <div className="text-[10.5px] text-[#059669] underline break-all font-mono">
                                 {linkUrl}
                               </div>
                             )
@@ -1460,7 +1460,7 @@ export default function AutomationCreatePage() {
                     </div>
 
                     <div className="p-2 rounded-xl bg-zinc-900 border border-zinc-800 text-[10px] text-zinc-400 flex items-center gap-1.5">
-                      <Lock className="h-3 w-3 text-[#A24BE0] shrink-0" />
+                      <Lock className="h-3 w-3 text-[#059669] shrink-0" />
                       <span>Live preview matching your custom messages.</span>
                     </div>
                   </div>
@@ -1477,7 +1477,7 @@ export default function AutomationCreatePage() {
                 </Button>
                 <Button
                   onClick={handleContinueFromStep5}
-                  className="bg-[#7A22B0] hover:bg-[#8E2CCB] text-white rounded-xl gap-2 font-bold cursor-pointer"
+                  className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl gap-2 font-bold cursor-pointer"
                 >
                   <span>Review My Automation</span>
                   <ChevronRight className="h-4 w-4" />
@@ -1509,7 +1509,7 @@ export default function AutomationCreatePage() {
                       {automationName.trim() || `Auto-Reply (${keywords[0]?.toUpperCase()})`}
                     </span>
                   </div>
-                  <Button variant="ghost" size="sm" onClick={() => goToStep(5, true)} className="text-[#A24BE0] text-xs">
+                  <Button variant="ghost" size="sm" onClick={() => goToStep(5, true)} className="text-[#059669] text-xs font-bold">
                     Edit
                   </Button>
                 </div>
@@ -1533,7 +1533,7 @@ export default function AutomationCreatePage() {
                       {goal === "send_messages" ? "Send Messages Automatically" : "Collect Email Addresses"}
                     </span>
                   </div>
-                  <Button variant="ghost" size="sm" onClick={() => goToStep(1, true)} className="text-[#A24BE0] text-xs">
+                  <Button variant="ghost" size="sm" onClick={() => goToStep(1, true)} className="text-[#059669] text-xs font-bold">
                     Edit
                   </Button>
                 </div>
@@ -1550,7 +1550,7 @@ export default function AutomationCreatePage() {
                         : "Story Mentions & Replies"}
                     </span>
                   </div>
-                  <Button variant="ghost" size="sm" onClick={() => goToStep(2, true)} className="text-[#A24BE0] text-xs">
+                  <Button variant="ghost" size="sm" onClick={() => goToStep(2, true)} className="text-[#059669] text-xs font-bold">
                     Edit
                   </Button>
                 </div>
@@ -1568,7 +1568,7 @@ export default function AutomationCreatePage() {
                           : "My next published post"}
                       </span>
                     </div>
-                    <Button variant="ghost" size="sm" onClick={() => goToStep(3, true)} className="text-[#A24BE0] text-xs">
+                    <Button variant="ghost" size="sm" onClick={() => goToStep(3, true)} className="text-[#059669] text-xs font-bold">
                       Edit
                     </Button>
                   </div>
@@ -1580,13 +1580,13 @@ export default function AutomationCreatePage() {
                     <span className="text-[#8C8890] block text-[11px]">Words to look for:</span>
                     <div className="flex gap-1.5 flex-wrap pt-1">
                       {keywords.map((k) => (
-                        <span key={k} className="px-2 py-0.5 rounded bg-[#7A22B0]/30 text-[#D8B4FE] font-mono font-bold text-[10.5px]">
+                        <span key={k} className="px-2 py-0.5 rounded bg-[#E8F7F0] text-[#059669] font-mono font-bold text-[10.5px] border border-[#10B981]/30">
                           &quot;{k}&quot;
                         </span>
                       ))}
                     </div>
                   </div>
-                  <Button variant="ghost" size="sm" onClick={() => goToStep(4, true)} className="text-[#A24BE0] text-xs">
+                  <Button variant="ghost" size="sm" onClick={() => goToStep(4, true)} className="text-[#059669] text-xs font-bold">
                     Edit
                   </Button>
                 </div>
@@ -1599,12 +1599,12 @@ export default function AutomationCreatePage() {
                       &quot;{dmText}&quot;
                     </p>
                     {hasLink && linkUrl && (
-                      <span className="text-[11px] text-[#A24BE0] block pt-1">
+                      <span className="text-[11px] text-[#059669] block pt-1 font-semibold">
                         Button: &quot;{linkLabel}&quot; → {linkUrl}
                       </span>
                     )}
                   </div>
-                  <Button variant="ghost" size="sm" onClick={() => goToStep(5, true)} className="text-[#A24BE0] text-xs">
+                  <Button variant="ghost" size="sm" onClick={() => goToStep(5, true)} className="text-[#059669] text-xs font-bold">
                     Edit
                   </Button>
                 </div>
@@ -1621,7 +1621,7 @@ export default function AutomationCreatePage() {
                 <Button
                   onClick={handleTurnOnAutomation}
                   disabled={submitting}
-                  className="bg-gradient-to-r from-[#8E2CCB] via-[#7A22B0] to-[#5A1688] hover:opacity-95 text-white rounded-xl px-8 py-3 font-bold shadow-xl shadow-[#7A22B0]/35 cursor-pointer text-sm"
+                  className="bg-gradient-to-r from-[#047857] via-[#059669] to-[#10B981] hover:opacity-95 text-white rounded-xl px-8 py-3 font-bold shadow-md shadow-[#059669]/25 cursor-pointer text-sm"
                 >
                   {submitting
                     ? isEditing
@@ -1666,7 +1666,7 @@ export default function AutomationCreatePage() {
 
               <div className="pt-2">
                 <Link href="/dashboard">
-                  <Button className="bg-[#7A22B0] hover:bg-[#8E2CCB] text-white rounded-xl px-6 py-2.5 font-bold cursor-pointer">
+                  <Button className="bg-[#059669] hover:bg-[#047857] text-white rounded-xl px-6 py-2.5 font-bold cursor-pointer">
                     Go to Dashboard
                   </Button>
                 </Link>

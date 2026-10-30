@@ -75,11 +75,11 @@ export function LiveDot({
   className?: string;
 }) {
   const colors = {
-    violet: "bg-[#A24BE0] shadow-[0_1px_6px_rgba(162,75,224,0.5)]",
-    success: "bg-emerald-400 shadow-[0_1px_6px_rgba(52,211,153,0.45)]",
+    violet: "bg-[#059669] shadow-[0_1px_6px_rgba(5,150,105,0.4)]",
+    success: "bg-emerald-500 shadow-[0_1px_6px_rgba(16,185,129,0.45)]",
     warning: "bg-amber-400 shadow-[0_1px_6px_rgba(251,191,36,0.45)]",
     danger: "bg-rose-400 shadow-[0_1px_6px_rgba(251,113,133,0.45)]",
-    muted: "bg-white/25",
+    muted: "bg-zinc-300",
   } as const;
 
   return (
@@ -96,7 +96,7 @@ export function LiveDot({
         <span
           className={cn(
             "absolute inset-0 rounded-full motion-safe:animate-ping",
-            tone === "violet" && "bg-[#A24BE0]/40",
+            tone === "violet" && "bg-[#059669]/40",
             tone === "success" && "bg-emerald-400/35",
             tone === "warning" && "bg-amber-400/35",
             tone === "danger" && "bg-rose-400/35"
@@ -212,9 +212,9 @@ export function SignalCell({
   className?: string;
 }) {
   const toneClass = {
-    violet: "text-[#D8B4FE]",
-    pale: "text-[#C084FC]",
-    white: "text-[#F4EFF6]",
+    violet: "text-[#059669]",
+    pale: "text-[#10B981]",
+    white: "text-[#11271D]",
     success: "text-emerald-300",
     warning: "text-amber-300",
     danger: "text-rose-300",
@@ -245,9 +245,9 @@ export function SignalFact({
   className?: string;
 }) {
   const toneClass = {
-    violet: "text-[#D8B4FE]",
-    pale: "text-[#C084FC]",
-    white: "text-[#F4EFF6]",
+    violet: "text-[#059669]",
+    pale: "text-[#10B981]",
+    white: "text-[#11271D]",
     success: "text-emerald-300",
     warning: "text-amber-300",
     danger: "text-rose-300",
@@ -277,8 +277,8 @@ export function SignalMeter({
 }) {
   const reduced = useReducedMotion();
   const fill = {
-    violet: "from-[#7A22B0] via-[#A24BE0] to-[#D8B4FE]",
-    pale: "from-[#7A22B0] to-[#C084FC]",
+    violet: "from-[#047857] via-[#059669] to-[#10B981]",
+    pale: "from-[#059669] to-[#34D399]",
     success: "from-emerald-600 to-emerald-300",
     warning: "from-amber-600 to-amber-300",
   }[tone];
@@ -356,7 +356,7 @@ export function StatusChip({
   className?: string;
 }) {
   const toneClass = {
-    violet: "border-[#A24BE0]/30 bg-[#7A22B0]/14 text-[#D8B4FE]",
+    violet: "border-[#059669]/30 bg-[#E8F7F0] text-[#059669]",
     success: "border-emerald-400/25 bg-emerald-400/10 text-emerald-300",
     warning: "border-amber-400/25 bg-amber-400/10 text-amber-300",
     danger: "border-rose-400/25 bg-rose-400/10 text-rose-300",
@@ -405,8 +405,8 @@ export function MetaItem({
   tone?: "default" | "violet" | "success" | "warning" | "danger";
 }) {
   const toneClass = {
-    default: "text-[#E7E1EA]",
-    violet: "text-[#D8B4FE]",
+    default: "text-[#11271D]",
+    violet: "text-[#059669]",
     success: "text-emerald-300",
     warning: "text-amber-300",
     danger: "text-rose-300",

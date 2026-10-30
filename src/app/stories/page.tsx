@@ -203,7 +203,7 @@ export default function StoriesPage() {
                         {rule.storyDmText}
                       </p>
                       {rule.linkUrl && (
-                        <p className="mt-2 truncate text-[10.5px] text-[#D8B4FE]">
+                        <p className="mt-2 truncate text-[10.5px] text-[#059669]">
                           {rule.linkLabel ? `${rule.linkLabel}: ` : ""}{rule.linkUrl}
                         </p>
                       )}
@@ -216,7 +216,7 @@ export default function StoriesPage() {
                     </span>
                     <Link
                       href={`/instagram/create/${rule.id}?step=2`}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#D8B4FE] transition-colors hover:text-white"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#059669] transition-colors hover:underline"
                     >
                       Edit reply
                       <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
@@ -252,7 +252,7 @@ export default function StoriesPage() {
                       <td className="font-mono text-[#F4EFF6]">
                         @{event.commenterUsername || "follower"}
                       </td>
-                      <td className="text-[#D8B4FE]">
+                      <td className="text-[#059669]">
                         {event.commentText || "Tagged you in Story"}
                       </td>
                       <td>

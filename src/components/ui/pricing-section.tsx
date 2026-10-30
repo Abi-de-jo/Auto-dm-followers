@@ -331,14 +331,14 @@ function PlanCard({
       <span
         aria-hidden="true"
         className={`pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent to-transparent ${
-          featured ? "via-[#C084FC]/60" : "via-white/[0.14]"
+          featured ? "via-[#10B981]/60" : "via-[#D5EAE0]"
         }`}
       />
       {featured && (
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full"
-          style={{ background: "radial-gradient(closest-side, rgba(122,34,176,0.45), transparent)" }}
+          style={{ background: "radial-gradient(closest-side, rgba(16,185,129,0.15), transparent)" }}
         />
       )}
 
@@ -605,12 +605,12 @@ export function PricingSection() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-0 h-[460px] w-[900px] -translate-x-1/2 rounded-full"
-        style={{ background: "radial-gradient(closest-side, rgba(122,34,176,0.14), transparent)" }}
+        style={{ background: "radial-gradient(closest-side, rgba(16,185,129,0.08), transparent)" }}
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute bottom-0 left-1/2 h-[380px] w-[760px] -translate-x-1/2 translate-y-1/3 rounded-full"
-        style={{ background: "radial-gradient(closest-side, rgba(76,18,115,0.32), transparent)" }}
+        style={{ background: "radial-gradient(closest-side, rgba(5,150,105,0.05), transparent)" }}
       />
 
       <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
@@ -716,22 +716,22 @@ export function PricingSection() {
 
             <div className="relative z-10 flex flex-col gap-5 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
               <div>
-                <p className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[#C084FC]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#C084FC] shadow-[0_1px_6px_rgba(192,132,252,0.7)]" />
-                  Early Bird · First 100 Creators
+                <p className="flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[#059669]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#10B981] shadow-[0_1px_6px_rgba(16,185,129,0.4)]" />
+                  Early Bird · Free Creator Access
                 </p>
-                <p className="mt-2 flex items-baseline gap-2 text-[#A7F3D0]">
-                  <span className="text-[40px] font-bold leading-none tracking-[-0.04em] tabular-nums">
-                    20%
+                <p className="mt-2 flex items-baseline gap-2 text-[#059669]">
+                  <span className="text-[40px] font-bold leading-none tracking-[-0.04em] tabular-nums text-[#059669]">
+                    100%
                   </span>
-                  <span className="text-sm font-bold uppercase tracking-[0.14em] text-[#E6E3E8]">
-                    off
+                  <span className="text-sm font-bold uppercase tracking-[0.14em] text-[#11271D]">
+                    free
                   </span>
                 </p>
               </div>
 
-              <p className="max-w-xl text-[13px] leading-relaxed text-[#B8B1C0] sm:text-right">
-                Lock in lifetime reduced pricing for the first 100 creators before slots fill up.
+              <p className="max-w-xl text-[13px] leading-relaxed text-[#4E7361] sm:text-right">
+                Open edition. Connect your account and deploy automated replies on autopilot.
               </p>
             </div>
           </div>

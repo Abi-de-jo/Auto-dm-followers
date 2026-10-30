@@ -448,10 +448,10 @@ function InstagramContent() {
                   animate={reducedMotion ? undefined : { y: [0, -4, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <span className="signal-connect-node border-[#A24BE0]/40 bg-[#7A22B0]/20">
-                    <Instagram className="h-7 w-7 text-[#D8B4FE]" aria-hidden="true" />
+                  <span className="signal-connect-node border-[#059669]/40 bg-[#E8F7F0]">
+                    <Instagram className="h-7 w-7 text-[#059669]" aria-hidden="true" />
                   </span>
-                  FreshDM
+                  AutoDM
                 </motion.div>
                 <span className="signal-connect-line" />
                 <div className="signal-connect-caption">
@@ -645,7 +645,7 @@ function InstagramContent() {
                         </div>
 
                         <div className="flex flex-wrap items-center gap-2">
-                          <button type="button" onClick={() => openSimulator(selectedAutomation)} className="signal-action-link border-[#A24BE0]/30 bg-[#7A22B0]/14 text-[#D8B4FE]">
+                          <button type="button" onClick={() => openSimulator(selectedAutomation)} className="signal-action-link border-[#059669]/30 bg-[#E8F7F0] text-[#059669]">
                             <Play className="h-3 w-3" aria-hidden="true" />
                             Preview reply
                           </button>
@@ -773,7 +773,7 @@ function InstagramContent() {
                         {automation.dmText}
                       </div>
                       {automation.linkUrl && (
-                        <div className="flex items-center gap-1.5 text-[10.5px] text-[#C084FC]">
+                        <div className="flex items-center gap-1.5 text-[10.5px] text-[#059669]">
                           <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
                           <span className="truncate">{automation.linkUrl}</span>
                         </div>
@@ -956,7 +956,7 @@ function InstagramContent() {
                           <div className="text-[10.5px] leading-relaxed">
                             <p className="flex items-center gap-1 font-semibold text-white">
                               @{connection?.username || "you"}
-                              <span className="rounded bg-[#7A22B0]/30 px-1 text-[8px] text-[#D8B4FE]">Author</span>
+                              <span className="rounded bg-[#E8F7F0] px-1 text-[8px] text-[#059669] font-bold">Author</span>
                             </p>
                             <p className="mt-0.5 text-zinc-300">{simulatorAutomation.publicReply}</p>
                           </div>
@@ -988,7 +988,7 @@ function InstagramContent() {
                     <div className="signal-phone-chat">
                       {simulatorStatus === "running" ? (
                         <div className="signal-msg signal-msg-in flex items-center gap-2">
-                          <Loader2 className="h-3.5 w-3.5 animate-spin text-[#A24BE0]" aria-hidden="true" />
+                          <Loader2 className="h-3.5 w-3.5 animate-spin text-[#059669]" aria-hidden="true" />
                           Delivering private DM…
                         </div>
                       ) : simulatorResult?.dmWillSend ? (

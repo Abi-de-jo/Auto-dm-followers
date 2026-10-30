@@ -104,7 +104,7 @@ export function FAQSection() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/4 top-1/3 h-[350px] w-[750px] rounded-full"
-        style={{ background: "radial-gradient(closest-side, rgba(122,34,176,0.11), transparent)" }}
+        style={{ background: "radial-gradient(closest-side, rgba(16,185,129,0.08), transparent)" }}
       />
 
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">

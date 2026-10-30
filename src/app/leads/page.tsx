@@ -189,8 +189,8 @@ export default function LeadsPage() {
                 <tbody>
                   {filteredLeads.map((lead) => (
                     <tr key={lead.id}>
-                      <td className="font-mono text-[#F4EFF6]">{lead.email}</td>
-                      <td className="text-[#D8B4FE]">@{lead.username}</td>
+                      <td className="font-mono text-[#11271D]">{lead.email}</td>
+                      <td className="text-[#059669] font-semibold">@{lead.username}</td>
                       <td>{lead.source}</td>
                       <td className="font-mono text-[11px]">
                         {new Date(lead.capturedAt).toLocaleString("en-US", {

@@ -352,7 +352,7 @@ export default function DashboardPage() {
                 aria-label="Refresh dashboard data"
               >
                 <RefreshCw
-                  className={`h-3.5 w-3.5 ${refreshing ? "animate-spin text-[#D8B4FE]" : ""}`}
+                  className={`h-3.5 w-3.5 ${refreshing ? "animate-spin text-[#059669]" : ""}`}
                   aria-hidden="true"
                 />
                 <span className="hidden sm:inline">Refresh</span>
@@ -533,7 +533,7 @@ export default function DashboardPage() {
 
                 <Link
                   href={nextAction.href}
-                  className="signal-insight group block transition-colors hover:border-[#A24BE0]/35 hover:bg-[#7A22B0]/12"
+                  className="signal-insight group block transition-colors hover:border-[#059669]/35 hover:bg-[#E8F7F0]"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
@@ -541,11 +541,11 @@ export default function DashboardPage() {
                       <p className="signal-insight-copy">{nextAction.copy}</p>
                     </div>
                     <ArrowUpRight
-                      className="h-4 w-4 shrink-0 text-[#C084FC] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      className="h-4 w-4 shrink-0 text-[#059669] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                       aria-hidden="true"
                     />
                   </div>
-                  <span className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-[#D8B4FE]">
+                  <span className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-[#059669]">
                     {nextAction.label}
                   </span>
                 </Link>
@@ -752,7 +752,7 @@ export default function DashboardPage() {
                           {data?.metrics.deliveryRate ?? 0}% delivered
                         </p>
                       </div>
-                      <ShieldCheck className="h-4 w-4 text-[#A24BE0]" aria-hidden="true" />
+                      <ShieldCheck className="h-4 w-4 text-[#059669]" aria-hidden="true" />
                     </div>
                     <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/[0.055]">
                       <div
@@ -767,10 +767,10 @@ export default function DashboardPage() {
 
                   <Link
                     href="/analytics"
-                    className="group mt-auto flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.025] px-3.5 py-3 text-xs font-semibold text-[#F4EFF6] transition-colors hover:border-[#A24BE0]/35 hover:bg-[#7A22B0]/10"
+                    className="group mt-auto flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.025] px-3.5 py-3 text-xs font-semibold text-[#11271D] transition-colors hover:border-[#059669]/35 hover:bg-[#E8F7F0]"
                   >
                     Open full signal report
-                    <ExternalLink className="h-3.5 w-3.5 text-[#C084FC] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    <ExternalLink className="h-3.5 w-3.5 text-[#059669] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
                   </Link>
                 </div>
               </SignalPanel>

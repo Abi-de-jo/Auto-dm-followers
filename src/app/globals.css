@@ -229,17 +229,17 @@ body {
 
 .clay-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(164, 143, 255, 0.4);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(164, 143, 255, 0.16);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 32px rgba(5, 150, 105, 0.15), inset 0 1px 1px rgba(16, 185, 129, 0.16);
 }
 
-/* Subtle Lavender Radial Glow */
+/* Subtle Emerald Radial Glow */
 .radial-glow-lavender {
-  background: radial-gradient(circle at 50% 30%, rgba(164, 143, 255, 0.14), transparent 60%);
+  background: radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.12), transparent 60%);
 }
 
 .radial-glow-accent {
-  background: radial-gradient(circle at center, rgba(48, 48, 96, 0.35), transparent 65%);
+  background: radial-gradient(circle at center, rgba(5, 150, 105, 0.25), transparent 65%);
 }
 
 /* Marquee infinite loop */

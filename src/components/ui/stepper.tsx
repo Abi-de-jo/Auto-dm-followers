@@ -208,9 +208,9 @@ export function StepperIndicator({
       data-state={state}
       className={cn(
         'relative flex size-8 shrink-0 items-center justify-center overflow-hidden transition-all duration-300 rounded-md text-sm font-medium',
-        'border border-white/10 bg-[#0E0C12] text-[#8C8890]',
-        'data-[state=completed]:bg-[#7A22B0] data-[state=completed]:text-white data-[state=completed]:border-[#A24BE0]',
-        'data-[state=active]:bg-[#7A22B0] data-[state=active]:text-white data-[state=active]:border-[#A24BE0] group-data-[state=active]/step:ring-2 group-data-[state=active]/step:ring-[#7A22B0]/40',
+        'border border-[#D5EAE0] bg-white text-[#527060]',
+        'data-[state=completed]:bg-[#059669] data-[state=completed]:text-white data-[state=completed]:border-[#059669]',
+        'data-[state=active]:bg-[#059669] data-[state=active]:text-white data-[state=active]:border-[#059669] group-data-[state=active]/step:ring-2 group-data-[state=active]/step:ring-[#059669]/30',
         className
       )}
     >
@@ -227,7 +227,7 @@ export function StepperSeparator({ className }: React.ComponentProps<'div'>) {
       data-slot="stepper-separator"
       className={cn(
         'm-2 h-0.5 flex-1 rounded-sm transition-colors duration-500',
-        isCompleted ? 'bg-[#7A22B0]' : 'bg-white/10',
+        isCompleted ? 'bg-[#059669]' : 'bg-[#D5EAE0]',
         className
       )}
     />

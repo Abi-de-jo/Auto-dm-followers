@@ -103,7 +103,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="1.2"
-        className="fill-transparent stroke-[#7A22B0]/40 font-anton tracking-[0.06em] text-[180px] sm:text-[210px] md:text-[230px]"
+        className="fill-transparent stroke-[#059669]/30 font-anton tracking-[0.06em] text-[180px] sm:text-[210px] md:text-[230px]"
         style={{ letterSpacing: "0.04em" }}
       >
         {text}
@@ -116,7 +116,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.8"
-        className="fill-transparent stroke-[#A24BE0]/50 font-anton tracking-[0.06em] text-[180px] sm:text-[210px] md:text-[230px]"
+        className="fill-transparent stroke-[#10B981]/40 font-anton tracking-[0.06em] text-[180px] sm:text-[210px] md:text-[230px]"
         style={{ letterSpacing: "0.04em" }}
       >
         {text}

@@ -5,6 +5,7 @@ import { SessionProvider } from "@/components/SessionProvider";
 import { NeonAuthSync } from "@/components/NeonAuthSync";
 import { GlobalAuthSync } from "@/components/GlobalAuthSync";
 import { Toaster } from "@/components/ui/sonner";
+import { CreatorFollowModal } from "@/components/CreatorFollowModal";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -57,6 +58,7 @@ export default function RootLayout({
           <GlobalAuthSync />
           <NeonAuthSync />
           {children}
+          <CreatorFollowModal />
           <Toaster />
         </SessionProvider>
       </body>
